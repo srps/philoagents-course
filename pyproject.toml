@@ -1,0 +1,17 @@
+[project]
+name = "philoagents"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[standard]>=0.115.8",
+    "langchain-core>=0.3.34",
+    "langchain-groq>=0.2.4",
+    "langgraph>=0.2.70",
+    "langgraph-checkpoint-mongodb>=0.1.0",
+    "opik>=1.4.11",
+    "pre-commit>=4.1.0",
+    "pydantic-settings>=2.7.1",
+    "pymongo>=4.9.2",
+]

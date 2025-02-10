@@ -1,0 +1,22 @@
+services:
+  api:
+    container_name: agent-backend
+    build:
+      context: .
+      dockerfile: philoagents/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+  ui:
+    container_name: philosopher-ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./ui:/app
+      - /app/node_modules
+    depends_on:
+      - api

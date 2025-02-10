@@ -1,1 +1,1 @@
-# agora-agents
+# philo-agents
