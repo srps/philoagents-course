@@ -1,7 +1,6 @@
 from langchain_core.prompts import (
     ChatPromptTemplate,
     MessagesPlaceholder,
-    PromptTemplate,
 )
 from langchain_groq import ChatGroq
 
@@ -39,14 +38,7 @@ def get_philosopher_response_chain():
 def get_summary_chain(summary: str = ""):
     model = get_chat_model()
 
-    if summary:
-        summary_message = PromptTemplate.from_template(
-            EXTEND_SUMMARY_PROMPT, template="jinja2"
-        )
-    else:
-        summary_message = PromptTemplate.from_template(
-            SUMMARY_PROMPT, template="jinja2"
-        )
+    summary_message = EXTEND_SUMMARY_PROMPT if summary else SUMMARY_PROMPT
 
     prompt = ChatPromptTemplate.from_messages(
         [
