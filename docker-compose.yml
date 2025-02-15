@@ -1,4 +1,15 @@
 services:
+  local_dev_atlas:
+    image: mongodb/mongodb-atlas-local:8.0
+    hostname: local_dev_atlas
+    ports:
+      - 27017:27017
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=philoagents
+      - MONGODB_INITDB_ROOT_PASSWORD=philoagents
+    volumes:
+      - data:/data/db
+      - config:/data/configdb
   api:
     container_name: agent-backend
     build:
@@ -20,3 +31,7 @@ services:
       - /app/node_modules
     depends_on:
       - api
+
+volumes:
+  data:
+  config:
