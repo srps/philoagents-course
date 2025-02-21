@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Long Term Memory Creation",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "module": "tools.create_long_term_memory",
+            "args": [],
+            "justMyCode": false
+        },
+    ]
+}
