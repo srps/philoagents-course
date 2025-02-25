@@ -35,33 +35,12 @@ def configure() -> None:
         )
 
 
-def get_or_create_dataset(name: str, prompts: list[str]) -> opik.Dataset | None:
+def get_dataset(name: str) -> opik.Dataset | None:
     client = opik.Opik()
     try:
         dataset = client.get_dataset(name=name)
     except Exception:
         dataset = None
-
-    if dataset:
-        logger.warning(f"Dataset '{name}' already exists. Skipping dataset creation.")
-
-        return dataset
-
-    assert prompts, "Prompts are required to create a dataset."
-
-    dataset_items = []
-    for prompt in prompts:
-        dataset_items.append(
-            {
-                "input": prompt,
-            }
-        )
-
-    dataset = create_dataset(
-        name=name,
-        description="Dataset for evaluating the agentic app.",
-        items=dataset_items,
-    )
 
     return dataset
 
@@ -69,9 +48,9 @@ def get_or_create_dataset(name: str, prompts: list[str]) -> opik.Dataset | None:
 def create_dataset(name: str, description: str, items: list[dict]) -> opik.Dataset:
     client = opik.Opik()
 
-    dataset = client.get_or_create_dataset(name=name, description=description)
-    dataset.insert(items)
+    client.delete_dataset(name=name)
 
-    dataset = client.get_dataset(name=name)
+    dataset = client.create_dataset(name=name, description=description)
+    dataset.insert(items)
 
     return dataset
