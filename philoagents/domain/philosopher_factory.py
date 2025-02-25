@@ -1,9 +1,9 @@
-from philoagents.domain.philosopher import Philosopher
 from philoagents.domain.exceptions import (
+    PhilosopherNameNotFound,
     PhilosopherPerspectiveNotFound,
     PhilosopherStyleNotFound,
-    PhilosopherNameNotFound,
 )
+from philoagents.domain.philosopher import Philosopher
 
 PHILOSOPHER_NAMES = {
     "socrates": "Socrates",

@@ -1,8 +1,9 @@
 from typing import Any, Dict, Optional
+
+from pymongo import AsyncMongoClient
 from pymongo.collection import Collection
 from pymongo.database import Database
 from pymongo.mongo_client import MongoClient
-from pymongo import AsyncMongoClient
 from pymongo.server_api import ServerApi
 
 from philoagents.settings import settings
