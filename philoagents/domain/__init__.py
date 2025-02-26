@@ -1,6 +1,6 @@
-from .philosopher_factory import PhilosopherFactory
-from .philosopher import Philosopher
 from .exceptions import PhilosopherPerspectiveNotFound, PhilosopherStyleNotFound
+from .philosopher import Philosopher
+from .philosopher_factory import PhilosopherFactory
 
 __all__ = [
     "PhilosopherFactory",

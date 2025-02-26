@@ -17,5 +17,14 @@
             "args": [],
             "justMyCode": false
         },
+        {
+            "name": "Evaluate Agent",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "module": "tools.evaluate_agent",
+            "args": [],
+            "justMyCode": false
+        },
     ]
 }

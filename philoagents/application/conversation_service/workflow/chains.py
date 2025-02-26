@@ -5,9 +5,9 @@ from langchain_core.prompts import (
 from langchain_groq import ChatGroq
 
 from philoagents.domain.prompts import (
+    EXTEND_SUMMARY_PROMPT,
     PHILOSOPHER_CHARACTER_CARD,
     SUMMARY_PROMPT,
-    EXTEND_SUMMARY_PROMPT,
 )
 from philoagents.settings import settings
 
