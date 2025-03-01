@@ -5,12 +5,14 @@ from loguru import logger
 from opik.evaluation import evaluate
 from opik.evaluation.metrics import (
     AnswerRelevance,
+    ContextPrecision,
     ContextRecall,
     Hallucination,
     Moderation,
 )
 
 from philoagents.application.conversation_service.generate_response import get_response
+from philoagents.application.conversation_service.workflow import state_to_str
 from philoagents.domain.philosopher_factory import PhilosopherFactory
 from philoagents.infrastructure import opik_utils
 from philoagents.settings import settings
@@ -22,48 +24,61 @@ async def evaluation_task(x: dict) -> dict:
     """Calls agentic app logic to evaluate philosopher responses.
 
     Args:
-        x (dict): Dictionary containing:
-            - question (str): The input question to evaluate
-            - philosopher_id (str): ID of the philosopher to use
-            - answer (str): Expected answer for evaluation
+        x: Dictionary containing evaluation data with the following keys:
+            messages: List of conversation messages where all but the last are inputs
+                and the last is the expected output
+            philosopher_id: ID of the philosopher to use
 
     Returns:
-        dict: Evaluation results containing:
-            - input (str): Original question
-            - context (str): Context used (empty in current implementation)
-            - output (str): Generated response from philosopher
-            - expected_output (str): Expected answer for comparison
+        dict: Dictionary with evaluation results containing:
+            input: Original input messages
+            context: Context used for generating the response
+            output: Generated response from philosopher
+            expected_output: Expected answer for comparison
     """
 
     philosopher_factory = PhilosopherFactory()
     philosopher = philosopher_factory.get_philosopher(x["philosopher_id"])
 
-    response = await get_response(
-        message=x["question"],
+    input_messages = x["messages"][:-1]
+    expected_output_message = x["messages"][-1]
+
+    response, latest_state = await get_response(
+        messages=input_messages,
         philosopher_id=philosopher.id,
         philosopher_name=philosopher.name,
         philosopher_perspective=philosopher.perspective,
         philosopher_style=philosopher.style,
         philosopher_context="",
+        new_thread=True,
     )
+    context = state_to_str(latest_state)
 
     return {
-        "input": x["question"],
-        "context": "",  # TODO: Extract context from the agent
+        "input": input_messages,
+        "context": context,
         "output": response,
-        "expected_output": x["answer"],
+        "expected_output": expected_output_message,
     }
 
 
-def evaluate_agent(dataset: opik.Dataset | None, nb_samples: int | None = None) -> None:
+def evaluate_agent(
+    dataset: opik.Dataset | None,
+    workers: int = 2,
+    nb_samples: int | None = None,
+) -> None:
     """Evaluates an agent using specified metrics and dataset.
 
     Runs evaluation using Opik framework with configured metrics for hallucination,
     answer relevance, moderation, and context recall.
 
     Args:
-        dataset (opik.Dataset | None): Dataset containing evaluation examples.
-            Must contain questions and expected answers.
+        dataset: Dataset containing evaluation examples.
+            Must contain messages and philosopher_id.
+        workers: Number of parallel workers to use for evaluation.
+            Defaults to 2.
+        nb_samples: Optional number of samples to evaluate.
+            If None, evaluates the entire dataset.
 
     Raises:
         ValueError: If dataset is None
@@ -91,6 +106,7 @@ def evaluate_agent(dataset: opik.Dataset | None, nb_samples: int | None = None) 
         AnswerRelevance(),
         Moderation(),
         ContextRecall(),
+        ContextPrecision(),
     ]
 
     logger.info("Evaluation details:")
@@ -102,6 +118,6 @@ def evaluate_agent(dataset: opik.Dataset | None, nb_samples: int | None = None) 
         task=lambda x: asyncio.run(evaluation_task(x)),
         scoring_metrics=scoring_metrics,
         experiment_config=experiment_config,
-        task_threads=2,
+        task_threads=workers,
         nb_samples=nb_samples,
     )

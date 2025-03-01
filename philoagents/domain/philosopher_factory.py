@@ -9,8 +9,8 @@ PHILOSOPHER_NAMES = {
     "socrates": "Socrates",
     "plato": "Plato",
     "aristotle": "Aristotle",
-    "descartes": "Descartes",
-    "leibniz": "Leibniz",
+    "descartes": "Rene Descartes",
+    "leibniz": "Gottfried Wilhelm Leibniz",
     "ada_lovelace": "Ada Lovelace",
     "turing": "Alan Turing",
     "chomsky": "Noam Chomsky",
@@ -104,10 +104,10 @@ class PhilosopherFactory:
             raise PhilosopherStyleNotFound(id_lower)
 
         return Philosopher(
-            id_lower,
-            PHILOSOPHER_NAMES[id_lower],
-            PHILOSOPHER_PERSPECTIVES[id_lower],
-            ", ".join(PHILOSOPHER_STYLES[id_lower]),
+            id=id_lower,
+            name=PHILOSOPHER_NAMES[id_lower],
+            perspective=PHILOSOPHER_PERSPECTIVES[id_lower],
+            style=", ".join(PHILOSOPHER_STYLES[id_lower]),
         )
 
     @staticmethod

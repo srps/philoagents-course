@@ -1,6 +1,6 @@
-from .long_term_memory import LongTermMemoryCreation, LongTermMemoryRetrieval
+from .long_term_memory import LongTermMemoryCreator, LongTermMemoryRetriever
 
 __all__ = [
-    "LongTermMemoryCreation",
-    "LongTermMemoryRetrieval",
+    "LongTermMemoryCreator",
+    "LongTermMemoryRetriever",
 ]
