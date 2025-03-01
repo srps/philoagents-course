@@ -45,3 +45,33 @@ EXTEND_SUMMARY_PROMPT = """This is a summary of the conversation to date between
 {{summary}}
 
 Extend the summary by taking into account the new messages above: """
+
+EVALUATION_DATASET_GENERATION_PROMPT = """
+Generate a conversation between a philosopher and a user based on the provided document. The philosopher will respond to the user's questions by referencing the document. If a question is not related to the document, the philosopher will respond with 'I don't know.' 
+
+The conversation should be in the following JSON format:
+
+{
+    "messages": [
+        {"role": "user", "content": ""},
+        {"role": "assistant", "content": ""},
+        {"role": "user", "content": ""},
+        {"role": "assistant", "content": ""},
+        {"role": "user", "content": ""},
+        {"role": "assistant", "content": ""}
+    ]
+}
+
+Please generate a maximum of 3 questions and answers. Ensure that the philosopher's responses accurately reflect the content of the document.
+
+Philosopher: {{philosopher}}
+Document: {{document}}
+
+Begin the conversation with a user question, and then generate the philosopher's response based on the document. Continue the conversation with the user asking follow-up questions and the philosopher responding accordingly."
+
+You have to keep the following in mind:
+
+- The philosopher will answer the user's questions based on the document.
+- The user will ask the philosopher questions about the document.
+- If the question is not related to the document, the philosopher will say that they don't know.
+"""

@@ -4,12 +4,13 @@ from langchain_community.document_loaders import WikipediaLoader
 from langchain_core.documents import Document
 from tqdm import tqdm
 
-from philoagents.domain.philosopher import PhilosopherExtract
+from philoagents.domain.philosopher import Philosopher, PhilosopherExtract
+from philoagents.domain.philosopher_factory import PhilosopherFactory
 
 
 def get_extraction_generator(
     philosophers: list[PhilosopherExtract],
-) -> Generator[tuple[PhilosopherExtract, Document], None, None]:
+) -> Generator[tuple[Philosopher, Document], None, None]:
     """
     Extract documents for a list of philosophers, yielding one document at a time along with the philosopher.
 
@@ -31,13 +32,15 @@ def get_extraction_generator(
         leave=True,
     )
 
+    philosophers_factory = PhilosopherFactory()
     for philosopher in progress_bar:
+        philosopher = philosophers_factory.get_philosopher(philosopher.id)
         progress_bar.set_postfix_str(f"Philosopher: {philosopher.name}")
 
         yield from ((philosopher, doc) for doc in extract(philosopher))
 
 
-def extract(philosopher: PhilosopherExtract) -> list[Document]:
+def extract(philosopher: Philosopher) -> list[Document]:
     """
     Extract documents for a single philosopher from Wikipedia.
 

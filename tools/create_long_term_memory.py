@@ -1,38 +1,22 @@
-import json
 from pathlib import Path
-from typing import List
 
 from philoagents.application import LongTermMemoryCreator
 from philoagents.domain.philosopher import PhilosopherExtract
+from philoagents.settings import settings
 
 
-def main(data_dir: Path) -> None:
+def main(metadata_file: Path) -> None:
     """Main function to create long-term memory for philosophers.
 
     Args:
-        data_dir: Directory containing the philosopher data.
+        metadata_file: Path to the philosophers extraction metadata JSON file.
     """
-    philosophers = load_philosophers(data_dir)
+
+    philosophers = PhilosopherExtract.from_json(metadata_file)
 
     long_term_memory_creator = LongTermMemoryCreator.build_from_settings()
     long_term_memory_creator(philosophers)
 
 
-def load_philosophers(data_dir: Path) -> List[PhilosopherExtract]:
-    """Load philosopher data from JSON file and convert to PhilosopherExtract objects.
-
-    Args:
-        data_dir: Directory containing the philosopher data.
-
-    Returns:
-        List of PhilosopherExtract objects parsed from the JSON file.
-    """
-
-    with open(data_dir / "philosophers.json", "r") as f:
-        philosophers_data = json.load(f)
-
-    return [PhilosopherExtract(**philosopher) for philosopher in philosophers_data]
-
-
 if __name__ == "__main__":
-    main(data_dir=Path("data"))
+    main(metadata_file=settings.EXTRACTION_METADATA_FILE_PATH)

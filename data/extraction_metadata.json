@@ -1,60 +1,60 @@
 [
     {
-        "name": "Plato",
+        "id": "plato",
         "urls": [
             "https://en.wikipedia.org/wiki/Plato"
         ]
     },
     {
-        "name": "Aristotle",
+        "id": "aristotle",
         "urls": [
             "https://en.wikipedia.org/wiki/Aristotle"
         ]
     },
     {
-        "name": "Socrates",
+        "id": "socrates",
         "urls": [
             "https://en.wikipedia.org/wiki/Socrates"
         ]
     },
     {
-        "name": "Rene Descartes",
+        "id": "descartes",
         "urls": [
             "https://en.wikipedia.org/wiki/René_Descartes"
         ]
     },
     {
-        "name": "Gottfried Wilhelm Leibniz",
+        "id": "leibniz",
         "urls": [
             "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz"
         ]
     },
     {
-        "name": "Ada Lovelace",
+        "id": "ada_lovelace",
         "urls": [
             "https://en.wikipedia.org/wiki/Ada_Lovelace"
         ]
     },
     {
-        "name": "Alan Turing",
+        "id": "turing",
         "urls": [
             "https://en.wikipedia.org/wiki/Alan_Turing"
         ]
     },
     {
-        "name": "John Searle",
+        "id": "searle",
         "urls": [
             "https://en.wikipedia.org/wiki/John_Searle"
         ]
     },
     {
-        "name": "Noam Chomsky",
+        "id": "chomsky",
         "urls": [
             "https://en.wikipedia.org/wiki/Noam_Chomsky"
         ]
     },
     {
-        "name": "Daniel Dennett",
+        "id": "dennett",
         "urls": [
             "https://en.wikipedia.org/wiki/Daniel_Dennett"
         ]

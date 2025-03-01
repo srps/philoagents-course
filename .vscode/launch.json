@@ -26,5 +26,14 @@
             "args": [],
             "justMyCode": false
         },
+        {
+            "name": "Generate Evaluation Dataset",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "module": "tools.generate_evaluation_dataset",
+            "args": [],
+            "justMyCode": false
+        }
     ]
 }

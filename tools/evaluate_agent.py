@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from philoagents.application.evaluation import create_dataset, evaluate_agent
+from philoagents.settings import settings
 
 
 def main(name: str, data_path: Path, workers: int = 2, nb_samples: int = 10) -> None:
@@ -11,7 +12,7 @@ def main(name: str, data_path: Path, workers: int = 2, nb_samples: int = 10) -> 
 if __name__ == "__main__":
     main(
         name="philoagents_evaluation_dataset",
-        data_path=Path("data/evaluation.json"),
+        data_path=settings.EVALUATION_DATASET_FILE_PATH,
         workers=1,
         nb_samples=2,
     )
