@@ -21,6 +21,7 @@ dependencies = [
     "langchain-community>=0.3.17",
     "wikipedia>=1.4.0",
     "ipykernel>=6.29.5",
+    "pydantic>=2.10.6",
 ]
 
 [dependency-groups]

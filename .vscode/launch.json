@@ -9,7 +9,7 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Long Term Memory Creation",
+            "name": "Create Long Term Memory",
             "type": "debugpy",
             "request": "launch",
             "cwd": "${workspaceFolder}",

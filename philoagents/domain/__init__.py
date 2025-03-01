@@ -1,5 +1,5 @@
 from .exceptions import PhilosopherPerspectiveNotFound, PhilosopherStyleNotFound
-from .philosopher import Philosopher
+from .philosopher import Philosopher, PhilosopherExtract
 from .philosopher_factory import PhilosopherFactory
 
 __all__ = [
@@ -7,4 +7,5 @@ __all__ = [
     "Philosopher",
     "PhilosopherPerspectiveNotFound",
     "PhilosopherStyleNotFound",
+    "PhilosopherExtract",
 ]

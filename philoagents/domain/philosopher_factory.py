@@ -92,6 +92,7 @@ class PhilosopherFactory:
         Raises:
             ValueError: If philosopher ID is not found in configurations
         """
+        
         id_lower = id.lower()
 
         if id_lower not in PHILOSOPHER_NAMES:
