@@ -5,6 +5,7 @@ from loguru import logger
 from opik.evaluation import evaluate
 from opik.evaluation.metrics import (
     AnswerRelevance,
+    ContextPrecision,
     ContextRecall,
     Hallucination,
     Moderation,
@@ -24,14 +25,14 @@ async def evaluation_task(x: dict) -> dict:
 
     Args:
         x: Dictionary containing evaluation data with the following keys:
-            question: The input question to evaluate
+            messages: List of conversation messages where all but the last are inputs
+                and the last is the expected output
             philosopher_id: ID of the philosopher to use
-            answer: Expected answer for evaluation
 
     Returns:
-        Dictionary with evaluation results containing:
-            input: Original question
-            context: Context used (empty in current implementation)
+        dict: Dictionary with evaluation results containing:
+            input: Original input messages
+            context: Context used for generating the response
             output: Generated response from philosopher
             expected_output: Expected answer for comparison
     """
@@ -73,7 +74,7 @@ def evaluate_agent(
 
     Args:
         dataset: Dataset containing evaluation examples.
-            Must contain questions and expected answers.
+            Must contain messages and philosopher_id.
         workers: Number of parallel workers to use for evaluation.
             Defaults to 2.
         nb_samples: Optional number of samples to evaluate.
@@ -105,6 +106,7 @@ def evaluate_agent(
         AnswerRelevance(),
         Moderation(),
         ContextRecall(),
+        ContextPrecision(),
     ]
 
     logger.info("Evaluation details:")
