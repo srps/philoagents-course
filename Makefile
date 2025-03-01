@@ -13,11 +13,14 @@ infrastructure-stop:
 
 # OFFLINE PIPELINES
 
-rag-ingestion:
+create-long-term-memory:
 	uv run python -m tools.create_long_term_memory
 
 delete-long-term-memory:
 	uv run python -m tools.delete_long_term_memory
+
+generate-evaluation-dataset:
+	uv run python -m tools.generate_evaluation_dataset
 
 evaluate-agent:
 	uv run python -m tools.evaluate_agent
