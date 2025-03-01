@@ -13,7 +13,7 @@ from philoagents.settings import settings
 
 
 async def get_response(
-    messages: str | list[str],
+    messages: str | list[str] | list[dict[str, Any]],
     philosopher_id: str,
     philosopher_name: str,
     philosopher_perspective: str,
