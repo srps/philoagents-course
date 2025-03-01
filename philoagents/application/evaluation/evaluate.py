@@ -39,8 +39,11 @@ async def evaluation_task(x: dict) -> dict:
     philosopher_factory = PhilosopherFactory()
     philosopher = philosopher_factory.get_philosopher(x["philosopher_id"])
 
+    input_messages = x["messages"][:-1]
+    expected_output_message = x["messages"][-1]
+
     response, latest_state = await get_response(
-        message=x["question"],
+        messages=input_messages,
         philosopher_id=philosopher.id,
         philosopher_name=philosopher.name,
         philosopher_perspective=philosopher.perspective,
@@ -51,10 +54,10 @@ async def evaluation_task(x: dict) -> dict:
     context = state_to_str(latest_state)
 
     return {
-        "input": x["question"],
+        "input": input_messages,
         "context": context,
         "output": response,
-        "expected_output": x["answer"],
+        "expected_output": expected_output_message,
     }
 
 

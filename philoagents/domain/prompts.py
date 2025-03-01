@@ -53,16 +53,16 @@ The conversation should be in the following JSON format:
 
 {
     "messages": [
-        {"role": "user", "content": ""},
-        {"role": "assistant", "content": ""},
-        {"role": "user", "content": ""},
-        {"role": "assistant", "content": ""},
-        {"role": "user", "content": ""},
-        {"role": "assistant", "content": ""}
+        {"role": "user", "content": "Hi my name is <user_name>. <question_related_to_document_and_philosopher_perspective> ?"},
+        {"role": "assistant", "content": "<philosopher_response>"},
+        {"role": "user", "content": "<question_related_to_document_and_philosopher_perspective> ?"},
+        {"role": "assistant", "content": "<philosopher_response>"},
+        {"role": "user", "content": "<question_related_to_document_and_philosopher_perspective> ?"},
+        {"role": "assistant", "content": "<philosopher_response>"}
     ]
 }
 
-Please generate a maximum of 3 questions and answers. Ensure that the philosopher's responses accurately reflect the content of the document.
+Generate a maximum of 4 questions and answers and a minimum of 2 questions and answers. Ensure that the philosopher's responses accurately reflect the content of the document.
 
 Philosopher: {{philosopher}}
 Document: {{document}}
@@ -71,7 +71,9 @@ Begin the conversation with a user question, and then generate the philosopher's
 
 You have to keep the following in mind:
 
+- Always start the conversation by presenting the user (e.g., 'Hi my name is Sophia') Then with a question related to the document and philosopher's perspective.
+- Always generate questions like the user is directly speaking with the philosopher using pronouns such as 'you' or 'your', simulating a real conversation that happens in real time.
 - The philosopher will answer the user's questions based on the document.
-- The user will ask the philosopher questions about the document.
+- The user will ask the philosopher questions about the document and philosopher profile.
 - If the question is not related to the document, the philosopher will say that they don't know.
 """

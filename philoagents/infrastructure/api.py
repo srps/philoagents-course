@@ -47,7 +47,7 @@ async def chat(chat_message: ChatMessage):
         philosopher = philosopher_factory.get_philosopher(chat_message.philosopher_id)
 
         response, _ = await get_response(
-            message=chat_message.message,
+            messages=chat_message.message,
             philosopher_id=chat_message.philosopher_id,
             philosopher_name=philosopher.name,
             philosopher_perspective=philosopher.perspective,

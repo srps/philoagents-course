@@ -13,15 +13,13 @@ def create_dataset(name: str, data_path: Path) -> opik.Dataset:
         evaluation_data = json.load(f)
 
     dataset_items = []
-    for philosopher_id, pairs in evaluation_data.items():
-        for pair in pairs:
-            dataset_items.append(
-                {
-                    "philosopher_id": philosopher_id,
-                    "question": pair["question"],
-                    "answer": pair["answer"],
-                }
-            )
+    for sample in evaluation_data["samples"]:
+        dataset_items.append(
+            {
+                "philosopher_id": sample["philosopher_id"],
+                "messages": sample["messages"],
+            }
+        )
 
     dataset = opik_utils.create_dataset(
         name=name,

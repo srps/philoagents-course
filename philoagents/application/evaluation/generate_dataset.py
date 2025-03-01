@@ -15,8 +15,10 @@ from philoagents.settings import settings
 
 
 class EvaluationDatasetGenerator:
-    def __init__(self, temperature: float = 0.7) -> None:
+    def __init__(self, temperature: float = 0.8, max_samples: int = 30) -> None:
         self.temperature = temperature
+        self.max_samples = max_samples
+
         self.__chain = self.__build_chain()
         self.__splitter = self.__build_splitter()
 
@@ -25,7 +27,7 @@ class EvaluationDatasetGenerator:
         extraction_generator = get_extraction_generator(philosophers)
         for philosopher, doc in extraction_generator:
             chunks = self.__splitter.split_documents([doc])
-            for chunk in chunks[:1]:
+            for chunk in chunks:
                 dataset_sample: EvaluationDatasetSample = self.__chain.invoke(
                     {"philosopher": philosopher, "document": chunk.page_content}
                 )
@@ -36,7 +38,15 @@ class EvaluationDatasetGenerator:
 
                 time.sleep(1)  # To avoid rate limiting
 
-            break
+                if len(dataset_samples) >= self.max_samples:
+                    break
+
+            if len(dataset_samples) >= self.max_samples:
+                    logger.warning(
+                        f"Reached maximum number of samples ({self.max_samples}). Stopping."
+                    )
+
+                    break
 
         logger.info(f"Generated {len(dataset_samples)} evaluation sample(s).")
         logger.info(f"Saving to '{settings.EVALUATION_DATASET_FILE_PATH}'")

@@ -1,6 +1,7 @@
 import uuid
+from typing import Any, Union
 
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage
 from langgraph.checkpoint.mongodb.aio import AsyncMongoDBSaver
 from opik.integrations.langchain import OpikTracer
 
@@ -12,7 +13,7 @@ from philoagents.settings import settings
 
 
 async def get_response(
-    message: str,
+    messages: str | list[str],
     philosopher_id: str,
     philosopher_name: str,
     philosopher_perspective: str,
@@ -60,7 +61,7 @@ async def get_response(
             }
             output_state = await graph.ainvoke(
                 input={
-                    "messages": [HumanMessage(content=message)],
+                    "messages": __format_messages(messages=messages),
                     "philosopher_name": philosopher_name,
                     "philosopher_perspective": philosopher_perspective,
                     "philosopher_style": philosopher_style,
@@ -72,3 +73,43 @@ async def get_response(
         return last_message.content, PhilosopherState(**output_state)
     except Exception as e:
         raise RuntimeError(f"Error running conversation workflow: {str(e)}") from e
+
+
+def __format_messages(
+    messages: Union[str, list[dict[str, Any]]],
+) -> list[Union[HumanMessage, AIMessage]]:
+    """Convert various message formats to a list of LangChain message objects.
+
+    Args:
+        messages: Can be one of:
+            - A single string message
+            - A list of string messages
+            - A list of dictionaries with 'role' and 'content' keys
+
+    Returns:
+        List[Union[HumanMessage, AIMessage]]: A list of LangChain message objects
+    """
+
+    if isinstance(messages, str):
+        return [HumanMessage(content=messages)]
+
+    if isinstance(messages, list):
+        if not messages:
+            return []
+
+        if (
+            isinstance(messages[0], dict)
+            and "role" in messages[0]
+            and "content" in messages[0]
+        ):
+            result = []
+            for msg in messages:
+                if msg["role"] == "user":
+                    result.append(HumanMessage(content=msg["content"]))
+                elif msg["role"] == "assistant":
+                    result.append(AIMessage(content=msg["content"]))
+            return result
+
+        return [HumanMessage(content=message) for message in messages]
+
+    return []
