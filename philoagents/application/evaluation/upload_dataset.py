@@ -6,7 +6,7 @@ import opik
 from philoagents.infrastructure import opik_utils
 
 
-def create_dataset(name: str, data_path: Path) -> opik.Dataset:
+def upload_dataset(name: str, data_path: Path) -> opik.Dataset:
     assert data_path.exists(), f"File {data_path} does not exist."
 
     with open(data_path, "r") as f:

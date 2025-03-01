@@ -1,11 +1,11 @@
 from pathlib import Path
 
-from philoagents.application.evaluation import create_dataset, evaluate_agent
+from philoagents.application.evaluation import evaluate_agent, upload_dataset
 from philoagents.settings import settings
 
 
 def main(name: str, data_path: Path, workers: int = 2, nb_samples: int = 10) -> None:
-    dataset = create_dataset(name=name, data_path=data_path)
+    dataset = upload_dataset(name=name, data_path=data_path)
     evaluate_agent(dataset, workers=workers, nb_samples=nb_samples)
 
 
