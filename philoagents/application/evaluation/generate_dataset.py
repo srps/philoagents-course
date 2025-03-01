@@ -28,9 +28,14 @@ class EvaluationDatasetGenerator:
         for philosopher, doc in extraction_generator:
             chunks = self.__splitter.split_documents([doc])
             for chunk in chunks:
-                dataset_sample: EvaluationDatasetSample = self.__chain.invoke(
-                    {"philosopher": philosopher, "document": chunk.page_content}
-                )
+                try:
+                    dataset_sample: EvaluationDatasetSample = self.__chain.invoke(
+                        {"philosopher": philosopher, "document": chunk.page_content}
+                    )
+                except Exception as e:
+                    logger.error(f"Error generating dataset sample: {e}")
+                    continue
+
                 dataset_sample.philosopher_id = philosopher.id
 
                 if self.__validate_sample(dataset_sample):
@@ -42,11 +47,13 @@ class EvaluationDatasetGenerator:
                     break
 
             if len(dataset_samples) >= self.max_samples:
-                    logger.warning(
-                        f"Reached maximum number of samples ({self.max_samples}). Stopping."
-                    )
+                logger.warning(
+                    f"Reached maximum number of samples ({self.max_samples}). Stopping."
+                )
 
-                    break
+                break
+
+        assert len(dataset_samples) >= 0, "Could not generate any evaluation samples."
 
         logger.info(f"Generated {len(dataset_samples)} evaluation sample(s).")
         logger.info(f"Saving to '{settings.EVALUATION_DATASET_FILE_PATH}'")
@@ -85,6 +92,6 @@ class EvaluationDatasetGenerator:
     def __validate_sample(self, sample: EvaluationDatasetSample) -> bool:
         return (
             len(sample.messages) >= 2
-            and sample.messages[0].role == "user"
-            and sample.messages[1].role == "assistant"
+            and sample.messages[-2].role == "user"
+            and sample.messages[-1].role == "assistant"
         )
