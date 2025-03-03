@@ -1,3 +1,9 @@
+ifeq (,$(wildcard .env))
+$(error .env file is missing. Please create one based on .env.example)
+endif
+
+include .env
+
 # --- Default Values ---
 
 CHECK_DIRS := .
@@ -10,20 +16,26 @@ infrastructure-up:
 infrastructure-stop:
 	docker compose stop
 
+check-docker-image:
+	@if [ -z "$$(docker images -q philoagents-api 2> /dev/null)" ]; then \
+		echo "Error: philoagents-api Docker image not found."; \
+		echo "Please run 'make infrastructure-up' first to build the required images."; \
+		exit 1; \
+	fi
 
 # OFFLINE PIPELINES
 
-create-long-term-memory:
-	uv run python -m tools.create_long_term_memory
+create-long-term-memory: check-docker-image
+	docker run --rm --network=philoagents-network --env-file .env philoagents-api uv run python -m tools.create_long_term_memory
 
-delete-long-term-memory:
-	uv run python -m tools.delete_long_term_memory
+delete-long-term-memory: check-docker-image
+	docker run --rm --network=philoagents-network --env-file .env philoagents-api uv run python -m tools.delete_long_term_memory
 
-generate-evaluation-dataset:
-	uv run python -m tools.generate_evaluation_dataset
+generate-evaluation-dataset: check-docker-image
+	docker run --rm --network=philoagents-network --env-file .env philoagents-api uv run python -m tools.generate_evaluation_dataset
 
-evaluate-agent:
-	uv run python -m tools.evaluate_agent
+evaluate-agent: check-docker-image
+	docker run --rm --network=philoagents-network --env-file .env philoagents-api uv run python -m tools.evaluate_agent --workers 1 --nb-samples 10
 
 # --- QA ---
 

@@ -27,7 +27,7 @@ class EvaluationDatasetGenerator:
         extraction_generator = get_extraction_generator(philosophers)
         for philosopher, doc in extraction_generator:
             chunks = self.__splitter.split_documents([doc])
-            for chunk in chunks:
+            for chunk in chunks[:5]:
                 try:
                     dataset_sample: EvaluationDatasetSample = self.__chain.invoke(
                         {"philosopher": philosopher, "document": chunk.page_content}
