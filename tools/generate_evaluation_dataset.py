@@ -13,7 +13,7 @@ def main(metadata_file: Path, temperature: float, max_samples: int) -> None:
     logger.info(
         f"Generating evaluation dataset with temperature {temperature} and {max_samples} samples."
     )
-    logger.info(f"Count of philosophers: {len(philosophers)}")
+    logger.info(f"Total philosophers: {len(philosophers)}")
 
     evaluation_dataset_generator = EvaluationDatasetGenerator(
         temperature=temperature, max_samples=max_samples
@@ -24,6 +24,6 @@ def main(metadata_file: Path, temperature: float, max_samples: int) -> None:
 if __name__ == "__main__":
     main(
         metadata_file=settings.EXTRACTION_METADATA_FILE_PATH,
-        temperature=1.0,
+        temperature=0.9,
         max_samples=30,
     )

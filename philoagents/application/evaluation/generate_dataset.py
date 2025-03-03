@@ -85,7 +85,7 @@ class EvaluationDatasetGenerator:
     ) -> RecursiveCharacterTextSplitter:
         return RecursiveCharacterTextSplitter.from_tiktoken_encoder(
             encoding_name="cl100k_base",
-            chunk_size=int(max_token_limit * 0.25),
+            chunk_size=int(max_token_limit * 0.5),
             chunk_overlap=0,
         )
 
