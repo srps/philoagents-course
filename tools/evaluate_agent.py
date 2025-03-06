@@ -18,9 +18,9 @@ from philoagents.settings import settings
 )
 @click.option("--workers", default=1, type=int, help="Number of workers")
 @click.option(
-    "--nb-samples", default=10, type=int, help="Number of samples to evaluate"
+    "--nb-samples", default=20, type=int, help="Number of samples to evaluate"
 )
-def main(name: str, data_path: Path, workers: int = 1, nb_samples: int = 10) -> None:
+def main(name: str, data_path: Path, workers: int, nb_samples: int) -> None:
     """
     Evaluate an agent on a dataset.
 
