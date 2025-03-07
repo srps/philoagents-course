@@ -5,9 +5,11 @@ from datasketch import MinHash, MinHashLSH
 from langchain_core.documents import Document
 from loguru import logger
 
+from philoagents.settings import settings
+
 
 def deduplicate_documents(
-    documents: List[Document], threshold: float = 0.8
+    documents: List[Document], threshold: float = 0.7
 ) -> List[Document]:
     """Remove duplicate documents from a list based on content similarity.
 
@@ -44,7 +46,9 @@ def deduplicate_documents(
 
 
 def find_duplicates(
-    documents: List[Document], threshold: float = 0.8, num_perm: int = 512
+    documents: List[Document],
+    threshold: float = 0.7,
+    num_perm: int = int(settings.RAG_CHUNK_SIZE * 0.5),
 ) -> List[Tuple[int, int, float]]:
     """Find duplicate documents using MinHash algorithm.
 
