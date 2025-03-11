@@ -112,9 +112,12 @@ Our recommendation for getting the most out of this course:
 
 | Module | Materials | Description | Running the code |
 |--------|-----------|-------------|------------------|
-| 1 | [Build your Second Brain AI assistant](https://decodingml.substack.com/p/build-your-second-brain-ai-assistant) | Architect an AI assistant for your Second Brain. | **No code** |
-| 2 | [Data pipelines for AI assistants](https://decodingml.substack.com/p/data-pipelines-for-ai-assistants) | Build a data ETL pipeline to process custom Notion data, crawl documents, compute a quality score using LLMs & heuristics, and ingest them into a NoSQL database. | [apps/second-brain-offline](apps/second-brain-offline) |
-| 3 | [From noisy docs to fine-tuning datasets](https://decodingml.substack.com/p/from-noisy-docs-to-fine-tuning-datasets) | Use the Notion and crawled data to generate a high-quality summarization instruct dataset using distillation. | [apps/second-brain-offline](apps/second-brain-offline) |
+| 1 | PhiloAgents - Project Overview (WIP) | Architect our PhiloAgents simulation. | **No code** |
+| 2 | Create a simple Agent using LangGraph + Our Agent implementation (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
+| 3 | Using MongoDB as a memory system (short and long-term memory) (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
+| 4 | Implementing the Agent API  (FastAPI + Websockets) (WIP) | ... | **No code** |
+| 5 | Evaluating Agents, prompt monitoring, and prompt versioning (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
+| 3 | MultiAgent simulation in action (WIP) | Use the Notion and crawled data to generate a high-quality summarization instruct dataset using distillation. | [apps/second-brain-offline](apps/second-brain-offline) |
 
 ------
 
