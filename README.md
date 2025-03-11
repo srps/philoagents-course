@@ -117,7 +117,7 @@ Our recommendation for getting the most out of this course:
 | 3 | Using MongoDB as a memory system (short and long-term memory) (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
 | 4 | Implementing the Agent API  (FastAPI + Websockets) (WIP) | ... | **No code** |
 | 5 | Evaluating Agents, prompt monitoring, and prompt versioning (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
-| 3 | MultiAgent simulation in action (WIP) | Use the Notion and crawled data to generate a high-quality summarization instruct dataset using distillation. | [apps/second-brain-offline](apps/second-brain-offline) |
+| 6 | MultiAgent simulation in action (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
 
 ------
 
