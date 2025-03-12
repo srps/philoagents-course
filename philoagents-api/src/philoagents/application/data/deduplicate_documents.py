@@ -5,7 +5,7 @@ from datasketch import MinHash, MinHashLSH
 from langchain_core.documents import Document
 from loguru import logger
 
-from philoagents.settings import settings
+from philoagents.config import settings
 
 
 def deduplicate_documents(

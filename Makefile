@@ -1,5 +1,5 @@
 ifeq (,$(wildcard philoagents-api/.env))
-$(error .env file is missing in philoagents-api/. Please create one based on .env.example)
+$(error .env file is missing at philoagents-api/.env. Please create one based on .env.example)
 endif
 
 include philoagents-api/.env
