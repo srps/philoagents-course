@@ -78,7 +78,7 @@ Also, the course requires access to these cloud services. The authentication to 
 
 | Service | Purpose | Cost | Environment Variable | Setup Guide | Starting with Module |
 |---------|---------|------|---------------------|-------------| ---------------------|
-| [Groq](https://groq.com?utm_source=both&utm_medium=github&utm_campaign=Philoagents) | LLM API | Free tier | `HUGGINGFACE_ACCESS_TOKEN` | [Quick Start Guide](...) | Module 1 |
+| [Groq](https://groq.com?utm_source=both&utm_medium=github&utm_campaign=Philoagents) | LLM API | Free tier | `GROQ_API_KEY` | [Quick Start Guide](...) | Module 1 |
 | [Opik](https://rebrand.ly/second-brain-course-opik) | LLM evaluation and prompt monitoring | Free tier (Hosted on Comet - same API Key) | `COMET_API_KEY` | [Quick Start Guide](https://rebrand.ly/second-brain-course-comet-quickstart) | Module 5 |
 | [OpenAI API](https://openai.com/index/openai-api/) | LLM API | Pay-per-use | `OPENAI_API_KEY` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) | Module 6 |
 
@@ -88,7 +88,7 @@ But, in case you want to deploy the code, you'll need to setup the following ser
 
 | Service | Purpose | Cost | Required Credentials | Setup Guide |
 |---------|---------|------|---------------------|-------------| 
-| [MongoDB](https://rebrand.ly/second-brain-course-mongodb) | NoSQL and vector database | Free tier | `MONGODB_URI` | 1. [Create a free MongoDB Atlas account](https://rebrand.ly/second-brain-course-mongodb-setup-1) <br> 2. [Create a Cluster](https://rebrand.ly/second-brain-course-mongodb-setup-2) </br> 3. [Add a Database User](https://rebrand.ly/second-brain-course-mongodb-setup-3) </br> 4. [Configure a Network Connection](https://rebrand.ly/second-brain-course-mongodb-setup-4) |
+| [MongoDB](https://rebrand.ly/second-brain-course-mongodb) | Document database | Free tier | `MONGODB_URI` | 1. [Create a free MongoDB Atlas account](https://rebrand.ly/second-brain-course-mongodb-setup-1) <br> 2. [Create a Cluster](https://rebrand.ly/second-brain-course-mongodb-setup-2) </br> 3. [Add a Database User](https://rebrand.ly/second-brain-course-mongodb-setup-3) </br> 4. [Configure a Network Connection](https://rebrand.ly/second-brain-course-mongodb-setup-4) |
 
 # 🎯 Getting Started
 
@@ -96,8 +96,8 @@ But, in case you want to deploy the code, you'll need to setup the following ser
 
 Start by cloning the repository and navigating to the project directory:
 ```
-git clone https://github.com/neural-maze/philoagents.git
-cd philoagents 
+git clone https://github.com/neural-maze/philoagents-course.git
+cd philoagents-course 
 ```
 
 Next, we have to prepare your Python environment and its dependencies.

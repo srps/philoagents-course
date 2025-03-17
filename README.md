@@ -16,24 +16,24 @@
 
 Welcome to this open-source course; a team-up between Decoding ML and The Neural Maze. Get ready to jump, to experiment and maybe even break a few things (in the name of learning, of course). Let's build something awesome together!
 
-**[X]** course contains **[X] modules** that will teach you how to build an **[X]**. You'll learn to build an end-to-end [X]
+**The PhiloAgents Course** contains **6 modules** that will teach you how to build "an AI agent simulation engine" for an interactive game that **impersoates phillosophers from our history**, such as Plato, Aristotel and Turing. You'll learn to replace NPC's in the game with AI agents that dynamically interact and adjust based on the player's questions.
 
-By the end of this course, you'll be able to architect and implement a production-ready agentic RAG and LLM system from scratch.
+While building the "agents simulation engines", by the end of this course, you'll be able to architect and implement a production-ready agentic RAG and LLM system from scratch.
 
-### So What Is [X]?
+### So What Is the PhiloAgents Simulation Engine?
 
 ...
 
 ### What You'll Do:
 
-- ...
+- Build a game character simulation engine, powered by agents, that impersoates phillosophers from our history, such as Plato, Aristotel and Turing.
+- Design production-ready agentic RAG applications.
+- Apply LLMOps and software engineering best practices.
+- Use industry tools: Groq, MongoDB, Opik, LangGraph, LangChain, FastAPI, Websockets, Docker, etc.
 
-After completing this course, you'll have access to your own [X], as seen in the video below:
+After completing this course, you'll have access to your own agentic simulation engine, as seen in the video below:
 
 <video src="https://github.com/user-attachments/assets/8fd6aca7-ae5a-4faf-9c69-3556cb355ce1"/></video>
-
-
-
 
 -------
 
@@ -84,11 +84,21 @@ After completing this course, you'll have access to your own [X], as seen in the
 
 ## 🎯 What You'll Learn
 
-While building [X], you'll master:
+While building the PhiloAgents simulation engine, you'll master:
 
-- ...
+- Agent Development with LangGraph and custom implementations
+- Memory Systems Architecture using MongoDB (short and long-term memory)
+- Real-time Agent Communication with FastAPI and WebSockets
+- Agent Evaluation and Prompt Engineering Best Practices
+- Multi-Agent System Design and Orchestration
+- Production-grade RAG Implementation
+- LLMOps and System Monitoring
+- Integration with Industry Tools (Groq, MongoDB, Opik)
+- End-to-end System Architecture (UI → Backend → Agent → Monitoring)
+- Knowledge Base Creation from Wikipedia and Stanford Encyclopedia
+- Agent Personality Design and Implementation
 
-🥷 With these skills, you'll become a ninja in building [X]. 
+🥷 With these skills, you'll become a ninja in building production-ready agentic RAG applications. 
 
 ## 👥 Who Should Join?
 
@@ -194,30 +204,27 @@ Our recommendation for getting the most out of this course:
 
 ## 🏗️ Project Structure
 
-While building the Second Brain AI assistant, we will build two separate Python applications:
+While building the PhiloAgents simulation engine, we will rely on two separate applications:
 
 ```bash
 .
-├── apps / 
-|   ├── infrastructure/               # Docker infrastructure for the applications
-|   |   ├── second-brain-offline/     # Offline ML pipelines
-└─  └─  └── second-brain-online/      # Online inference pipeline = our AI assistant
+├── philoagents-api/     # Backend API containing the philoagents simulation engine (Python)
+└── philoagents-ui/      # Frontend UI for the game (Node)
 ```
+
+The course will focus only on the `philoagents-api` application that contains all the agent simulation logic. The `philoagents-ui` application is used to play the game.
 
 ## 👔 Dataset
 
-...
+To impersonate our philosophers agents, with real-world knowledge, we will populate their long-term memory with data from:
+- Wikipedia
+- The Stanford Encyclopedia of Philosophy
 
-[Download here](...)
+You don't have to download anything explictly. While populating the long-term memory, the `philoagents-api` application will download the data from the internet automatically.
 
 ## 🚀 Getting Started
 
-Find detailed setup instructions in each app's documentation:
-
-| Application | Documentation |
-|------------|---------------|
-| Offline ML Pipelines  </br> (data pipelines, RAG, fine-tuning, etc.) | [apps/second-brain-offline](apps/second-brain-offline) |
-| Online Inference Pipeline </br> (Second Brain AI assistant) | [apps/second-brain-online](apps/second-brain-online) |
+Find detailed setup and usage instructions in the [INSTALL_AND_USAGE.md](INSTALL_AND_USAGE.md) file.
 
 **Pro tip:** Read the accompanying articles first for a better understanding of the system you'll build.
 
@@ -225,7 +232,7 @@ Find detailed setup instructions in each app's documentation:
 
 Have questions or running into issues? We're here to help!
 
-Open a [GitHub issue](https://github.com/decodingml/second-brain-ai-assistant-course/issues) for:
+Open a [GitHub issue](https://github.com/neural-maze/philoagents-course/issues) for:
 - Questions about the course material
 - Technical troubleshooting
 - Clarification on concepts
