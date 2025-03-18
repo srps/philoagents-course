@@ -144,13 +144,15 @@ People interested in learning how to design and build agentic applications, the 
 
 ## 💰 Cost Structure
 
-The course is open-source and free! In case you want to run everything end-to-end, you'll only need ~$1 for cloud tools:
+**The course is open-source and free!** In case you want to run everything end-to-end (which is optional), you'll only need ~$1 for cloud tools:
 
 | Service | Maximum Cost |
 |---------|--------------|
 | OpenAI's API (Optional)| ~$1 |
 
-We will use OpenAI, just in Lesson 5, as an LLM-as-a-judge, to evaluate our agents, **which is optional**. Otherwise, we will use Groq's API, which has a free tier. **Reading-only? Everything's free!**
+We will use OpenAI, just in Lesson 5, as an LLM-as-a-judge, to evaluate our agents, **which is optional**. Otherwise, we will use Groq's API, which has a free tier. 
+
+**Reading-only? Everything's free!**
 
 ## 🥂 Open-source Course: Participation is Open and Free
 
