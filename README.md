@@ -1,6 +1,6 @@
 <div align="center">
   <h1>PhiloAgents Course</h1>
-  <h3>Learn how to ...</h3>
+  <h3>Learn how to build an AI-powered game simulation engine to impersonate popular philosophers.</h3>
   <p class="tagline">Open-source course by <a href="https://theneuralmaze.substack.com/">The Neural Maze</a> and <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with </br> <a href="https://rebrand.ly/second-brain-course-mongodb">MongoDB</a>, <a href="https://rebrand.ly/second-brain-course-opik">Opik</a> and <a href="...">Groq</a>.</p>
 </div>
 
@@ -103,21 +103,18 @@ While building the PhiloAgents simulation engine, you'll master:
 
 - Engineering the system architecture
   - End-to-end design (UI → Backend → Agent → Monitoring)
-  - RESTful API deployment with FastAPI
+  - RESTful API deployment with FastAPI and Docker
   - Real-time communication via WebSockets
-  - Containerization with Docker
 
 - Implementing advanced agent features
   - Short and long-term memory with MongoDB
   - Dynamic conversation handling
-  - Personality and context management
   - Real-time response generation
 
 - Mastering industry tools and practices
   - Integration with Groq, MongoDB, Opik
   - Modern Python tooling (uv, ruff)
   - LangChain and LangGraph ecosystems
-  - Production-ready code structure
 
 - Applying LLMOps best practices
   - Automated agent evaluation
