@@ -14,20 +14,25 @@
 
 ## 📖 About This Course
 
-Welcome to this open-source course; a team-up between Decoding ML and The Neural Maze. Get ready to jump, to experiment and maybe even break a few things (in the name of learning, of course). Let's build something awesome together!
+Ever dreamed of building your own AI-powered game? Get ready for an exciting journey where we'll combine the thrill of game development with cutting-edge AI technology!
 
-**The PhiloAgents Course** contains **6 modules** that will teach you how to build "an AI agent simulation engine" for an interactive game that **impersoates phillosophers from our history**, such as Plato, Aristotel and Turing. You'll learn to replace NPC's in the game with AI agents that dynamically interact and adjust based on the player's questions.
+Welcome to PhiloAgents (a team-up between Decoding ML and The Neural Maze) - where ancient philosophy meets modern AI. In this hands-on course, you'll build an AI agent simulation engine that brings historical philosophers to life in an interactive game environment. Imagine having deep conversations with Plato, debating ethics with Aristotle, or discussing artificial intelligence with Turing himself!
 
-While building the "agents simulation engines", by the end of this course, you'll be able to architect and implement a production-ready agentic RAG and LLM system from scratch.
+**In 6 comprehensive modules**, you'll learn how to:
+- Create AI agents that authentically embody historical philosophers
+- Master building agentic applications
+- Architect and implement a production-ready RAG, LLM and LLMOps system from scratch
 
-### So What Is the PhiloAgents Simulation Engine?
+### 🎮 The PhiloAgents Experience
 
 ...
 
 ### What You'll Do:
 
-- Build a game character simulation engine, powered by agents, that impersoates phillosophers from our history, such as Plato, Aristotel and Turing.
-- Design production-ready agentic RAG applications.
+Transform static NPCs into dynamic AI personalities that:
+- Build a game character simulation engine, powered by AI agents and LLMs, that impersonates philosophers from our history, such as Plato, Aristotle and Turing.
+- Design production-ready agentic RAG systems.
+- Ship the agent as a RESTful API.
 - Apply LLMOps and software engineering best practices.
 - Use industry tools: Groq, MongoDB, Opik, LangGraph, LangChain, FastAPI, Websockets, Docker, etc.
 
@@ -86,74 +91,95 @@ After completing this course, you'll have access to your own agentic simulation 
 
 While building the PhiloAgents simulation engine, you'll master:
 
-- Agent Development with LangGraph and custom implementations
-- Memory Systems Architecture using MongoDB (short and long-term memory)
-- Real-time Agent Communication with FastAPI and WebSockets
-- Agent Evaluation and Prompt Engineering Best Practices
-- Multi-Agent System Design and Orchestration
-- Production-grade RAG Implementation
-- LLMOps and System Monitoring
-- Integration with Industry Tools (Groq, MongoDB, Opik)
-- End-to-end System Architecture (UI → Backend → Agent → Monitoring)
-- Knowledge Base Creation from Wikipedia and Stanford Encyclopedia
-- Agent Personality Design and Implementation
+- Building intelligent agents with LangGraph
+  - Agent development and orchestration
+  - RAG agentic communication patterns
+  - Character impersonation through prompt engineering (Plato, Aristotle, Turing)
 
-🥷 With these skills, you'll become a ninja in building production-ready agentic RAG applications. 
+- Creating production-grade RAG systems
+  - Vector database integration
+  - Knowledge base creation from Wikipedia and Stanford Encyclopedia
+  - Advanced information retrieval
+
+- Engineering the system architecture
+  - End-to-end design (UI → Backend → Agent → Monitoring)
+  - RESTful API deployment with FastAPI
+  - Real-time communication via WebSockets
+  - Containerization with Docker
+
+- Implementing advanced agent features
+  - Short and long-term memory with MongoDB
+  - Dynamic conversation handling
+  - Personality and context management
+  - Real-time response generation
+
+- Mastering industry tools and practices
+  - Integration with Groq, MongoDB, Opik
+  - Modern Python tooling (uv, ruff)
+  - LangChain and LangGraph ecosystems
+  - Production-ready code structure
+
+- Applying LLMOps best practices
+  - Automated agent evaluation
+  - Prompt monitoring and versioning
+  - Evaluation dataset generation
+
+🥷 By the end, you'll be a ninja in production-ready AI agent development!
 
 ## 👥 Who Should Join?
 
-People interested in learning how to design and build [X].
+People interested in learning how to design and build agentic applications, the right way!
 
 | Target Audience | Why Join? |
 |-----------------|-----------|
-| ML/AI Engineers | Build production-ready [X] (beyond Notebook tutorials). |
-| Data/Software Engineers | Architect end-to-end [X] applications. |
-| Data Scientists | Implement production [X] systems using LLMOps and SWE best practices. |
+| ML/AI Engineers | Build production-ready agentic applications (beyond Notebook tutorials). |
+| Data/Software Engineers | Architect end-to-end agentic applications. |
+| Data Scientists | Implement production agentic systems using LLMOps and SWE best practices. |
 
 ## 🎓 Prerequisites
 
 | Category | Requirements |
 |----------|-------------|
-| **Skills** | - Python (Intermediate) <br/> - Machine Learning, LLMs, RAG (Beginner) |
-| **Hardware** | Modern laptop/PC (GPU optional - cloud alternatives provided) |
-| **Level** | Intermediate (But with a little sweat and patience, anyone can do it) |
+| **Skills** | - Python (Beginner) <br/> - Machine Learning, LLMs, RAG (Beginner) |
+| **Hardware** | Modern laptop/PC (We will use Groq and OpenAI APIs to call our LLMs) |
+| **Level** | Beginner to Intermediate |
 
 
 ## 💰 Cost Structure
 
-The course is open-source and free! You'll only need $1-$5 for tools if you run the code:
+The course is open-source and free! In case you want to run everything end-to-end, you'll only need ~$1 for cloud tools:
 
 | Service | Maximum Cost |
 |---------|--------------|
-| OpenAI's API | ~$3 |
-| Hugging Face's Dedicated Endpoints (Optional) | ~$2 |
+| OpenAI's API (Optional)| ~$1 |
 
-The best part? We offer multiple paths - you can complete the entire course for just ~$1 by choosing cost-efficient options. **Reading-only? Everything's free!**
+We will use OpenAI, just in Lesson 5, as an LLM-as-a-judge, to evaluate our agents, **which is optional**. Otherwise, we will use Groq's API, which has a free tier. **Reading-only? Everything's free!**
 
 ## 🥂 Open-source Course: Participation is Open and Free
 
-As an open-source course, you don't have to enroll. Everything is self-paced, free of charge and with its resources freely accessible at:
+As an open-source course, you don't have to enroll. Everything is self-paced, free of charge, and with its resources freely accessible at:
 - **code**: this GitHub repository
-- **lessons**: [Decoding ML](https://decodingml.substack.com/p/build-your-second-brain-ai-assistant)
+- **video lessons**: [The Neural Maze](https://www.youtube.com/@TheNeuralMaze)
+- **written lessons**: [Decoding ML](https://decodingml.substack.com)
 
 ## 📚 Course Outline
 
-This **open-source course consists of [X] comprehensive modules** covering theory, system design, and hands-on implementation.
+This **open-source course consists of 6 comprehensive modules** covering theory, system design, and hands-on implementation.
 
 Our recommendation for getting the most out of this course:
 1. Clone the repository.
 2. Read the materials.
-3. Setup the code and run it to replicate our results.
+3. Set up the code and run it to replicate our results.
 4. Go deeper into the code to understand the details of the implementation.
 
 | Module | Materials | Description | Running the code |
 |--------|-----------|-------------|------------------|
 | 1 | PhiloAgents - Project Overview (WIP) | Architect our PhiloAgents simulation. | **No code** |
-| 2 | Create a simple Agent using LangGraph + Our Agent implementation (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
-| 3 | Using MongoDB as a memory system (short and long-term memory) (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
-| 4 | Implementing the Agent API  (FastAPI + Websockets) (WIP) | ... | **No code** |
-| 5 | Evaluating Agents, prompt monitoring, and prompt versioning (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
-| 6 | MultiAgent simulation in action (WIP) | ... | [apps/second-brain-offline](apps/second-brain-offline) |
+| 2 | Create a simple Agent using LangGraph + Our Agent implementation (WIP) | Introduction to building agents using LangGraph. | [philoagents-api](philoagents-api) |
+| 3 | Using MongoDB as a memory system (short and long-term memory) (WIP) | Implementing a memory layer using MongoD (short and long-term memory). | [philoagents-api](philoagents-api) |
+| 4 | Implementing the Agent API  (FastAPI + Websockets) (WIP) | Expose the agent as a RESTful API (FastAPI + Websockets). | [philoagents-api](philoagents-api) |
+| 5 | Evaluating Agents, prompt monitoring, and prompt versioning (WIP) | LLMOps best practices: evaluating agents, prompt monitoring, prompt versioning, etc. | [philoagents-api](philoagents-api) |
+| 6 | MultiAgent simulation in action (WIP) | Let's glue everything into your multi-agent philosopher simulation. | [philoagents-api](philoagents-api) |
 
 ------
 
@@ -208,7 +234,7 @@ While building the PhiloAgents simulation engine, we will rely on two separate a
 
 ```bash
 .
-├── philoagents-api/     # Backend API containing the philoagents simulation engine (Python)
+├── philoagents-api/     # Backend API containing the PhiloAgents simulation engine (Python)
 └── philoagents-ui/      # Frontend UI for the game (Node)
 ```
 
@@ -216,11 +242,11 @@ The course will focus only on the `philoagents-api` application that contains al
 
 ## 👔 Dataset
 
-To impersonate our philosophers agents, with real-world knowledge, we will populate their long-term memory with data from:
+To impersonate our philosopher agents with real-world knowledge, we will populate their long-term memory with data from:
 - Wikipedia
 - The Stanford Encyclopedia of Philosophy
 
-You don't have to download anything explictly. While populating the long-term memory, the `philoagents-api` application will download the data from the internet automatically.
+You don't have to download anything explicitly. While populating the long-term memory, the `philoagents-api` application will download the data from the internet automatically.
 
 ## 🚀 Getting Started
 
