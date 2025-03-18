@@ -23,11 +23,7 @@ Welcome to PhiloAgents (a team-up between Decoding ML and The Neural Maze) - whe
 - Master building agentic applications
 - Architect and implement a production-ready RAG, LLM and LLMOps system from scratch
 
-### 🎮 The PhiloAgents Experience
-
-...
-
-### What You'll Do:
+### 🎮 What You'll Do:
 
 Transform static NPCs into dynamic AI personalities that:
 - Build a game character simulation engine, powered by AI agents and LLMs, that impersonates philosophers from our history, such as Plato, Aristotle and Turing.
