@@ -78,9 +78,9 @@ Also, the course requires access to these cloud services. The authentication to 
 
 | Service | Purpose | Cost | Environment Variable | Setup Guide | Starting with Module |
 |---------|---------|------|---------------------|-------------| ---------------------|
-| [Groq](https://groq.com?utm_source=both&utm_medium=github&utm_campaign=Philoagents) | LLM API | Free tier | `GROQ_API_KEY` | [Quick Start Guide](...) | Module 1 |
-| [Opik](https://rebrand.ly/second-brain-course-opik) | LLM evaluation and prompt monitoring | Free tier (Hosted on Comet - same API Key) | `COMET_API_KEY` | [Quick Start Guide](https://rebrand.ly/second-brain-course-comet-quickstart) | Module 5 |
-| [OpenAI API](https://openai.com/index/openai-api/) | LLM API | Pay-per-use | `OPENAI_API_KEY` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) | Module 6 |
+| [Groq](https://groq.com?utm_source=both&utm_medium=github&utm_campaign=Philoagents) | LLM API that powers the agents | Free tier | `GROQ_API_KEY` | [Quick Start Guide](https://console.groq.com/docs/quickstart) | Module 1 |
+| [Opik](https://rebrand.ly/second-brain-course-opik) | LLMOps | Free tier (Hosted on Comet - same API Key) | `COMET_API_KEY` | [Quick Start Guide](https://rebrand.ly/second-brain-course-comet-quickstart) | Module 5 |
+| [OpenAI API](https://openai.com/index/openai-api/) | LLM API used for evaluation | Pay-per-use | `OPENAI_API_KEY` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) | Module 5 |
 
 When working locally, the infrastructure is set up using Docker. Thus, you can use the default values found in the `settings.py` for all the infrastructure-related environment variables.
 
@@ -134,25 +134,23 @@ Before running any command, you have to set up your environment:
 
 # 📁 Project Structure
 
-At Decoding ML we teach how to build production ML systems. Thus, instead of splitting the code into separate modules, the course follows the structure of a real-world Python project:
+The project follows a clean architecture structure commonly used in production Python projects:
 
 ```bash
-.
-├── configs/                   # ZenML configuration files
-├── pipelines/                 # ZenML ML pipeline definitions
-├── src/second_brain_offline/  # Main package directory
-│   ├── application/           # Application layer
-│   ├── domain/                # Domain layer
-│   ├── infrastructure/        # Infrastructure layer
-│   ├── config.py              # Configuration settings
-│   └── utils.py               # Utility functions
-├── steps/                     # ZenML pipeline steps
-├── tests/                     # Test files
-├── tools/                     # Entrypoint scripts that use the Python package
-├── .env.example               # Environment variables template
-├── .python-version            # Python version specification
-├── Makefile                   # Project commands
-└── pyproject.toml             # Project dependencies
+philoagents-api/
+    ├── data/                  # Data files
+    ├── notebooks/             # Notebooks
+    ├── src/philoagents/       # Main package directory
+    │   ├── application/       # Application layer
+    │   ├── domain/            # Domain layer
+    │   ├── infrastructure/    # Infrastructure layer
+    │   └── config.py          # Configuration settings
+    ├── tools/                 # Entrypoint scripts that use the Python package
+    ├── .env.example           # Environment variables template
+    ├── .python-version        # Python version specification
+    ├── Dockerfile             # API Docker image definition
+    ├── Makefile               # Project commands
+    └── pyproject.toml         # Project dependencies
 ```
 
 # 🏗️ Set Up Your Local Infrastructure
@@ -182,32 +180,46 @@ make infrastructure-build
 
 # ⚡️ Running the Code for Each Lesson
 
-To simulate the course modules, we split the CLI commands and offline ML pipelines you must run per module so you know exactly where you are in the course.
+After you have set up your environment (through the `.env` file) and local infrastructure (through Docker), you are ready to run the code.
 
-> WIP 👷
+## Modules 1 to 4
 
-## Module 1: ...
+As the first 4 modules are coupled together, you can test them all at once.
 
-
-
-# 🔧 Utlity Commands
-
-## Formatting
-
-```
-make format-check
-make format-fix
-```
-
-## Linting
-
+First, populate the long term memory with the following command:
 ```bash
-make lint-check
-make lint-fix
+make create-long-term-memory
 ```
 
-## Tests
+Next, you can access the game by typing in your browser:
+```
+http://localhost:8080
+```
+Which will open the game UI, similar to the screenshot below:
 
+![Philosopher Town](public/assets/game_screenshot.png)
+
+To delete the long term memory, you can run the following command:
 ```bash
-make test
+make delete-long-term-memory
+```
+
+## Module 5
+
+First, to visualize the prompt traces, as seen in the screenshot below, visit Opik.
+
+![Opik](public/assets/opik_screenshot.png)
+
+To evaluate the agents, you can run the following command:
+```bash
+make evaluate-agent
+```
+
+To visualize the evaluation results, as seen in the screenshot below, you also have to visit Opik.
+
+![Opik](public/assets/opik_evaluation_screenshot.png)
+
+We already generated a dataset for you, but in case you want to generate a new one, you can run the following command:
+```bash
+make generate-evaluation-dataset
 ```
