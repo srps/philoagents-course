@@ -23,10 +23,6 @@ Welcome to PhiloAgents (a team-up between Decoding ML and The Neural Maze) - whe
 - Master building agentic applications
 - Architect and implement a production-ready RAG, LLM and LLMOps system from scratch
 
-###  
-
-...
-
 ### 🎮 The PhiloAgents Experience. What You'll Do:
 
 Transform static NPCs into dynamic AI personalities that:
