@@ -1,7 +1,7 @@
 <div align="center">
   <h1>PhiloAgents Course</h1>
   <h3>Learn how to build an AI-powered game simulation engine to impersonate popular philosophers.</h3>
-  <p class="tagline">Open-source course by <a href="https://theneuralmaze.substack.com/">The Neural Maze</a> and <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with </br> <a href="https://rebrand.ly/second-brain-course-mongodb">MongoDB</a>, <a href="https://rebrand.ly/second-brain-course-opik">Opik</a> and <a href="...">Groq</a>.</p>
+  <p class="tagline">Open-source course by <a href="https://theneuralmaze.substack.com/">The Neural Maze</a> and <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with </br> <a href="https://rebrand.ly/philoagents-mongodb">MongoDB</a>, <a href="https://rebrand.ly/philoagents-opik">Opik</a> and <a href="https://rebrand.ly/philoagents-groq">Groq</a>.</p>
 </div>
 
 </br>
@@ -282,17 +282,17 @@ We will deeply appreciate your support for the AI community and future readers ð
   <table style="border-collapse: collapse; border: none;">
     <tr style="border: none;">
       <td align="center" style="border: none; padding: 20px;">
-        <a href="https://rebrand.ly/second-brain-course-mongodb" target="_blank">
+        <a href="https://rebrand.ly/philoagents-mongodb" target="_blank">
           <img src="static/sponsors/mongo.png" width="200" style="max-height: 45px; width: auto;" alt="MongoDB">
         </a>
       </td>
       <td align="center" style="border: none; padding: 20px;">
-        <a href="https://rebrand.ly/second-brain-course-opik" target="_blank">
+        <a href="https://rebrand.ly/philoagents-opik" target="_blank">
           <img src="static/sponsors/opik.png" width="200" style="max-height: 45px; width: auto;" alt="Opik">
         </a>
       </td>
       <td align="center" style="border: none; padding: 20px;">
-        <a href="..." target="_blank">
+        <a href="https://rebrand.ly/philoagents-groq" target="_blank">
           <img src="static/sponsors/groq.png" width="200" style="max-height: 45px; width: auto;" alt="Groq">
         </a>
       </td>

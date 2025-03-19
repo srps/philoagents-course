@@ -78,8 +78,8 @@ Also, the course requires access to these cloud services. The authentication to 
 
 | Service | Purpose | Cost | Environment Variable | Setup Guide | Starting with Module |
 |---------|---------|------|---------------------|-------------| ---------------------|
-| [Groq](https://groq.com?utm_source=both&utm_medium=github&utm_campaign=Philoagents) | LLM API that powers the agents | Free tier | `GROQ_API_KEY` | [Quick Start Guide](https://console.groq.com/docs/quickstart) | Module 1 |
-| [Opik](https://rebrand.ly/second-brain-course-opik) | LLMOps | Free tier (Hosted on Comet - same API Key) | `COMET_API_KEY` | [Quick Start Guide](https://rebrand.ly/second-brain-course-comet-quickstart) | Module 5 |
+| [Groq](https://rebrand.ly/philoagents-groq) | LLM API that powers the agents | Free tier | `GROQ_API_KEY` | [Quick Start Guide](https://rebrand.ly/philoagents-groq-quickstart) | Module 1 |
+| [Opik](https://rebrand.ly/philoagents-opik) | LLMOps | Free tier (Hosted on Comet - same API Key) | `COMET_API_KEY` | [Quick Start Guide](https://rebrand.ly/philoagents-opik-quickstart) | Module 5 |
 | [OpenAI API](https://openai.com/index/openai-api/) | LLM API used for evaluation | Pay-per-use | `OPENAI_API_KEY` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) | Module 5 |
 
 When working locally, the infrastructure is set up using Docker. Thus, you can use the default values found in the `settings.py` for all the infrastructure-related environment variables.
@@ -88,7 +88,7 @@ But, in case you want to deploy the code, you'll need to setup the following ser
 
 | Service | Purpose | Cost | Required Credentials | Setup Guide |
 |---------|---------|------|---------------------|-------------| 
-| [MongoDB](https://rebrand.ly/second-brain-course-mongodb) | Document database | Free tier | `MONGODB_URI` | 1. [Create a free MongoDB Atlas account](https://rebrand.ly/second-brain-course-mongodb-setup-1) <br> 2. [Create a Cluster](https://rebrand.ly/second-brain-course-mongodb-setup-2) </br> 3. [Add a Database User](https://rebrand.ly/second-brain-course-mongodb-setup-3) </br> 4. [Configure a Network Connection](https://rebrand.ly/second-brain-course-mongodb-setup-4) |
+| [MongoDB](https://rebrand.ly/philoagents-mongodb) | Document database | Free tier | `MONGODB_URI` | 1. [Create a free MongoDB Atlas account](https://rebrand.ly/philoagents-mongodb-setup-1) <br> 2. [Create a Cluster](https://rebrand.ly/philoagents-mongodb-setup-2) </br> 3. [Add a Database User](https://rebrand.ly/philoagents-mongodb-setup-3) </br> 4. [Configure a Network Connection](https://rebrand.ly/philoagents-mongodb-setup-4) |
 
 # 🎯 Getting Started
 
@@ -176,7 +176,7 @@ make infrastructure-build
 ```
 
 > [!NOTE]
-> To visualize the raw and RAG data from MongoDB, we recommend using [MongoDB Compass](https://rebrand.ly/second-brain-course-mongodb-compass) or Mongo's official IDE plugin (e.g., `MongoDB for VS Code`). To connect to the working MongoDB instance, use the `MONGODB_URI` value from the `.env` file or found inside the [config.py](src/second_brain_offline/config.py) file.
+> To visualize the raw and RAG data from MongoDB, we recommend using [MongoDB Compass](https://rebrand.ly/philoagents-mongodb-compass) or Mongo's official IDE plugin (e.g., `MongoDB for VS Code`). To connect to the working MongoDB instance, use the `MONGODB_URI` value from the `.env` file or found inside the [config.py](philoagents-api/src/philoagents/config.py) file.
 
 # ⚡️ Running the Code for Each Lesson
 
@@ -197,7 +197,7 @@ http://localhost:8080
 ```
 Which will open the game UI, similar to the screenshot below:
 
-![Philosopher Town](public/assets/game_screenshot.png)
+![Philosopher Town](static/game_screenshot.png)
 
 To delete the long term memory, you can run the following command:
 ```bash
@@ -208,7 +208,7 @@ make delete-long-term-memory
 
 First, to visualize the prompt traces, as seen in the screenshot below, visit Opik.
 
-![Opik](public/assets/opik_screenshot.png)
+![Opik](static/opik_screenshot.png)
 
 To evaluate the agents, you can run the following command:
 ```bash
@@ -217,7 +217,7 @@ make evaluate-agent
 
 To visualize the evaluation results, as seen in the screenshot below, you also have to visit Opik.
 
-![Opik](public/assets/opik_evaluation_screenshot.png)
+![Opik](static/opik_evaluation_screenshot.png)
 
 We already generated a dataset for you, but in case you want to generate a new one, you can run the following command:
 ```bash
