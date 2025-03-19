@@ -121,7 +121,7 @@ While building the PhiloAgents simulation engine, you'll master:
 
 ## 👥 Who Should Join?
 
-People interested in learning how to design and build agentic applications, the right way!
+This course is tailored for people who learn by building. After completing the course, you will have our code template and enough inspiration to develop your personal agentic applications.
 
 | Target Audience | Why Join? |
 |-----------------|-----------|
