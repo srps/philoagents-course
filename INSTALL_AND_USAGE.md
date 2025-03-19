@@ -82,7 +82,7 @@ Also, the course requires access to these cloud services. The authentication to 
 | [Opik](https://rebrand.ly/philoagents-opik) | LLMOps | Free tier (Hosted on Comet - same API Key) | `COMET_API_KEY` | [Quick Start Guide](https://rebrand.ly/philoagents-opik-quickstart) | Module 5 |
 | [OpenAI API](https://openai.com/index/openai-api/) | LLM API used for evaluation | Pay-per-use | `OPENAI_API_KEY` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) | Module 5 |
 
-When working locally, the infrastructure is set up using Docker. Thus, you can use the default values found in the `settings.py` for all the infrastructure-related environment variables.
+When working locally, the infrastructure is set up using Docker. Thus, you can use the default values found in the [config.py](philoagents-api/src/philoagents/config.py) file for all the infrastructure-related environment variables.
 
 But, in case you want to deploy the code, you'll need to setup the following services with their corresponding environment variables:
 
@@ -155,10 +155,10 @@ philoagents-api/
 
 # 🏗️ Set Up Your Local Infrastructure
 
-We use Docker to set up the local infrastructure (ZenML, MongoDB).
+We use Docker to set up the local infrastructure (Game UI, Agent API, MongoDB).
 
 > [!WARNING]
-> Before running the command below, ensure you do not have any processes running on port `27017` (MongoDB).
+> Before running the command below, ensure you do not have any processes running on ports `27017` (MongoDB), `8000` (Agent API) and `8080` (Game UI).
 
 To start it, run:
 ```bash
@@ -175,9 +175,6 @@ To build the Docker images (without running them), run:
 make infrastructure-build
 ```
 
-> [!NOTE]
-> To visualize the raw and RAG data from MongoDB, we recommend using [MongoDB Compass](https://rebrand.ly/philoagents-mongodb-compass) or Mongo's official IDE plugin (e.g., `MongoDB for VS Code`). To connect to the working MongoDB instance, use the `MONGODB_URI` value from the `.env` file or found inside the [config.py](philoagents-api/src/philoagents/config.py) file.
-
 # ⚡️ Running the Code for Each Lesson
 
 After you have set up your environment (through the `.env` file) and local infrastructure (through Docker), you are ready to run the code.
@@ -186,10 +183,13 @@ After you have set up your environment (through the `.env` file) and local infra
 
 As the first 4 modules are coupled together, you can test them all at once.
 
-First, populate the long term memory with the following command:
+First, populate the long term memory within your MongoDB instance (required for agentic RAG) with the following command:
 ```bash
 make create-long-term-memory
 ```
+
+> [!NOTE]
+> To visualize the raw and RAG data from MongoDB, we recommend using [MongoDB Compass](https://rebrand.ly/philoagents-mongodb-compass) or Mongo's official IDE plugin (e.g., `MongoDB for VS Code`). To connect to the working MongoDB instance, use the `MONGODB_URI` value from the `.env` file or found inside the [config.py](philoagents-api/src/philoagents/config.py) file.
 
 Next, you can access the game by typing in your browser:
 ```
@@ -197,29 +197,40 @@ http://localhost:8080
 ```
 Which will open the game UI, similar to the screenshot below:
 
-![Philosopher Town](static/game_screenshot.png)
+![Philosopher Town](static/game_starting_page.png)
 
-To delete the long term memory, you can run the following command:
+To see the instructions for playing the game, you can click on the `Instructions` button. To start the game, you can click on the `Let's Play!` button.
+
+Now you can start playing the game, wonder around the town and talk to our philosophers, as seen in the screenshot below:
+
+![Philosopher Town](static/game_socrates_example.png)
+
+You can also access the API documentation by typing in your browser:
+```
+http://localhost:8000/docs
+```
+
+To delete the long term memory from your MongoDB instance, you can run the following command:
 ```bash
 make delete-long-term-memory
 ```
 
 ## Module 5
 
-First, to visualize the prompt traces, as seen in the screenshot below, visit Opik.
+First, to visualize the prompt traces, as seen in the screenshot below, visit [Opik](https://rebrand.ly/philoagents-opik-dashboard).
 
-![Opik](static/opik_screenshot.png)
+![Opik](static/opik_monitoring_example.png)
 
 To evaluate the agents, you can run the following command:
 ```bash
 make evaluate-agent
 ```
 
-To visualize the evaluation results, as seen in the screenshot below, you also have to visit Opik.
+To visualize the evaluation results, as seen in the screenshot below, you also have to visit [Opik](https://rebrand.ly/philoagents-opik-dashboard).
 
-![Opik](static/opik_evaluation_screenshot.png)
+![Opik](static/opik_evaluation_example.png)
 
-We already generated a dataset for you, but in case you want to generate a new one, you can run the following command:
+We already generated a dataset for you found at [data/evaluation_dataset.json](philoagents-api/data/evaluation_dataset.json), but in case you want to generate a new one (to override the existing one), you can run the following command:
 ```bash
 make generate-evaluation-dataset
 ```
