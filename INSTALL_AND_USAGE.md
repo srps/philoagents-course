@@ -94,7 +94,7 @@ But, in case you want to deploy the code, you'll need to setup the following ser
 
 ## 1. Clone the Repository
 
-Start by cloning the repository and navigating to the project directory:
+Start by cloning the repository and navigating to the `philoagents-api` project directory:
 ```
 git clone https://github.com/neural-maze/philoagents-course.git
 cd philoagents-course/philoagents-api
