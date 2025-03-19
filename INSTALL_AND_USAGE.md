@@ -97,14 +97,14 @@ But, in case you want to deploy the code, you'll need to setup the following ser
 Start by cloning the repository and navigating to the project directory:
 ```
 git clone https://github.com/neural-maze/philoagents-course.git
-cd philoagents-course 
+cd philoagents-course/philoagents-api
 ```
 
 Next, we have to prepare your Python environment and its dependencies.
 
 ## 2. Installation
 
-To install the dependencies and activate the virtual environment, run the following commands:
+Inside the `philoagents-api` directory, to install the dependencies and activate the virtual environment, run the following commands:
 
 ```bash
 uv venv .venv
@@ -125,7 +125,7 @@ This command will:
 
 ## 3. Environment Configuration
 
-Before running any command, you have to set up your environment:
+Before running any command, inside the `philoagents-api` directory, you have to set up your environment:
 1. Create your environment file:
    ```bash
    cp .env.example .env
@@ -160,30 +160,30 @@ We use Docker to set up the local infrastructure (Game UI, Agent API, MongoDB).
 > [!WARNING]
 > Before running the command below, ensure you do not have any processes running on ports `27017` (MongoDB), `8000` (Agent API) and `8080` (Game UI).
 
-To start it, run:
+From the root `philoagents-course` directory, to start the Docker infrastructure, run:
 ```bash
 make infrastructure-up
 ```
 
-To stop it, run:
+From the root `philoagents-course` directory, to stop the Docker infrastructure, run:
 ```bash
 make infrastructure-stop
 ```
 
-To build the Docker images (without running them), run:
+From the root `philoagents-course` directory, to build the Docker images (without running them), run:
 ```bash
 make infrastructure-build
 ```
 
 # ⚡️ Running the Code for Each Lesson
 
-After you have set up your environment (through the `.env` file) and local infrastructure (through Docker), you are ready to run the code.
+After you have set up your environment (through the `.env` file) and local infrastructure (through Docker), you are ready to run and test out the game simulation.
 
-## Modules 1 to 4
+## Modules 1, 2, 3, 4 and 6
 
-As the first 4 modules are coupled together, you can test them all at once.
+As most of the modules are coupled, you must test them all at once.
 
-First, populate the long term memory within your MongoDB instance (required for agentic RAG) with the following command:
+First, from the root `philoagents-course` directory, populate the long term memory within your MongoDB instance (required for agentic RAG) with the following command:
 ```bash
 make create-long-term-memory
 ```
@@ -217,11 +217,13 @@ make delete-long-term-memory
 
 ## Module 5
 
+Only module 5 on evaluation and monitoring has its own instructions.
+
 First, to visualize the prompt traces, as seen in the screenshot below, visit [Opik](https://rebrand.ly/philoagents-opik-dashboard).
 
 ![Opik](static/opik_monitoring_example.png)
 
-To evaluate the agents, you can run the following command:
+To evaluate the agents, from the root `philoagents-course` directory, you can run the following command:
 ```bash
 make evaluate-agent
 ```
