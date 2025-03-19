@@ -199,9 +199,9 @@ Which will open the game UI, similar to the screenshot below:
 
 ![Philosopher Town](static/game_starting_page.png)
 
-To see the instructions for playing the game, you can click on the `Instructions` button. To start the game, you can click on the `Let's Play!` button.
+To see the instructions for playing the game, you can click on the `Instructions` button. Click the `Let's Play!` button to start the game.
 
-Now you can start playing the game, wonder around the town and talk to our philosophers, as seen in the screenshot below:
+Now you can start playing the game, wander around the town and talk to our philosophers, as seen in the screenshot below:
 
 ![Philosopher Town](static/game_socrates_example.png)
 
