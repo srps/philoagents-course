@@ -7,9 +7,7 @@
 </br>
 
 <p align="center">
-  <a href="...">
     <img src="static/system_architecture.png" alt="Architecture" width="600">
-  </a>
 </p>
 
 ## 📖 About This Course
