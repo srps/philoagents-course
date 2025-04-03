@@ -154,10 +154,10 @@ In Module 5 (optional module), we use OpenAI's API as an LLM-as-a-judge to evalu
 
 ## 🥂 Open-source Course: Participation is Open and Free
 
-As an open-source course, you don't have to enroll. Everything is self-paced, free of charge, and with its resources freely accessible at:
+As an open-source course, you don't have to enroll. Everything is self-paced, free of charge, and with its resources freely accessible at (video and articles are complementary - go through both for the whole picture):
 - **code**: this GitHub repository
-- **video lessons**: [The Neural Maze](https://www.youtube.com/@TheNeuralMaze)
-- **written lessons**: [Decoding ML](https://decodingml.substack.com)
+- **videos**: [The Neural Maze](https://www.youtube.com/@TheNeuralMaze)
+- **articles**: [Decoding ML](https://decodingml.substack.com)
 
 ## 📚 Course Outline
 
@@ -171,7 +171,7 @@ Our recommendation for getting the most out of this course:
 
 | Module | Materials | Description | Running the code |
 |--------|-----------|-------------|------------------|
-| 1 | [Video](https://www.youtube.com/watch?v=vbhShB70vFE&t=177s)<br/>[Article](https://decodingml.substack.com/p/build-your-gaming-simulation-ai-agent) | Architect your gaming simulation AI PhiloAgent. | **No code** |
+| 1 | [Module 1 - Video](https://www.youtube.com/watch?v=vbhShB70vFE&t=177s)<br/>[Module 1 - Article](https://decodingml.substack.com/p/build-your-gaming-simulation-ai-agent) | Architect your gaming simulation AI PhiloAgent. | **No code** |
 | 2 | Create a simple Agent using LangGraph + Our Agent implementation (WIP) | Introduction to building agents using LangGraph. | [philoagents-api](philoagents-api) |
 | 3 | Using MongoDB as a memory system (short and long-term memory) (WIP) | Implementing a memory layer using MongoD (short and long-term memory). | [philoagents-api](philoagents-api) |
 | 4 | Implementing the Agent API  (FastAPI + Websockets) (WIP) | Expose the agent as a RESTful API (FastAPI + Websockets). | [philoagents-api](philoagents-api) |
