@@ -165,13 +165,13 @@ This **open-source course consists of 6 comprehensive modules** covering theory,
 
 Our recommendation for getting the most out of this course:
 1. Clone the repository.
-2. Read the materials.
+2. Read the materials (video and articles are complementary - go through both for the whole picture)
 3. Set up the code and run it to replicate our results.
 4. Go deeper into the code to understand the details of the implementation.
 
 | Module | Materials | Description | Running the code |
 |--------|-----------|-------------|------------------|
-| 1 | PhiloAgents - Project Overview (WIP) | Architect our PhiloAgents simulation. | **No code** |
+| 1 | [Video](https://www.youtube.com/watch?v=vbhShB70vFE&t=177s)<br/>[Article](https://decodingml.substack.com/p/build-your-gaming-simulation-ai-agent) | Architect your gaming simulation AI PhiloAgent. | **No code** |
 | 2 | Create a simple Agent using LangGraph + Our Agent implementation (WIP) | Introduction to building agents using LangGraph. | [philoagents-api](philoagents-api) |
 | 3 | Using MongoDB as a memory system (short and long-term memory) (WIP) | Implementing a memory layer using MongoD (short and long-term memory). | [philoagents-api](philoagents-api) |
 | 4 | Implementing the Agent API  (FastAPI + Websockets) (WIP) | Expose the agent as a RESTful API (FastAPI + Websockets). | [philoagents-api](philoagents-api) |
