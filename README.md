@@ -172,7 +172,7 @@ Our recommendation for getting the most out of this course:
 | Module | Materials | Description | Running the code |
 |--------|-----------|-------------|------------------|
 | 1 | [Module 1 - Video](https://www.youtube.com/watch?v=vbhShB70vFE&t=177s)<br/>[Module 1 - Article](https://decodingml.substack.com/p/build-your-gaming-simulation-ai-agent) | Architect your gaming simulation AI PhiloAgent. | **No code** |
-| 2 | Create a simple Agent using LangGraph + Our Agent implementation (WIP) | Introduction to building agents using LangGraph. | [philoagents-api](philoagents-api) |
+| 2 | [Module 2 - Video](https://www.youtube.com/watch?v=5fqkdiTP5Xw)<br/>[Module 2 - Article](https://decodingml.substack.com/p/your-first-production-ready-rag-agent) | Building the PhiloAgent in LangGraph using agentic RAG. | [philoagents-api](philoagents-api) |
 | 3 | Using MongoDB as a memory system (short and long-term memory) (WIP) | Implementing a memory layer using MongoD (short and long-term memory). | [philoagents-api](philoagents-api) |
 | 4 | Implementing the Agent API  (FastAPI + Websockets) (WIP) | Expose the agent as a RESTful API (FastAPI + Websockets). | [philoagents-api](philoagents-api) |
 | 5 | Evaluating Agents, prompt monitoring, and prompt versioning (WIP) | LLMOps best practices: evaluating agents, prompt monitoring, prompt versioning, etc. | [philoagents-api](philoagents-api) |
