@@ -218,6 +218,11 @@ You can also access the API documentation by typing in your browser:
 http://localhost:8000/docs
 ```
 
+If you want to **directly call the agent bypassing the backend and UI logic**, you can do that by running:
+```bash
+makecall-agent
+```
+
 To delete the long term memory from your MongoDB instance, you can run the following command:
 ```bash
 make delete-long-term-memory
