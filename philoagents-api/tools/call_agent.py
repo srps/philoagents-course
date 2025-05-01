@@ -34,7 +34,7 @@ def async_command(f):
 )
 @async_command
 async def main(philosopher_id: str, query: str) -> None:
-    """CLI command to create long-term memory for philosophers.
+    """CLI command to query a philosopher.
 
     Args:
         philosopher_id: ID of the philosopher to call.
