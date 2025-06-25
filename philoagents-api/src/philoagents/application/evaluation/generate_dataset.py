@@ -12,11 +12,13 @@ from philoagents.config import settings
 from philoagents.domain import prompts
 from philoagents.domain.evaluation import EvaluationDataset, EvaluationDatasetSample
 from philoagents.domain.philosopher import PhilosopherExtract
+from pydantic import SecretStr
 
 
 class EvaluationDatasetGenerator:
-    def __init__(self, temperature: float = 0.8, max_samples: int = 40) -> None:
+    def __init__(self, temperature: float = 0.6, top_p: float = 0.95, max_samples: int = 40) -> None:
         self.temperature = temperature
+        self.model_kwargs = {"top_p": top_p}
         self.max_samples = max_samples
 
         self.__chain = self.__build_chain()
@@ -65,9 +67,10 @@ class EvaluationDatasetGenerator:
 
     def __build_chain(self):
         model = ChatGroq(
-            api_key=settings.GROQ_API_KEY,
-            model_name=settings.GROQ_LLM_MODEL,
+            api_key=SecretStr(settings.GROQ_API_KEY),
+            model=settings.GROQ_LLM_MODEL,
             temperature=self.temperature,
+            model_kwargs=self.model_kwargs,
         )
         model = model.with_structured_output(EvaluationDatasetSample)
 

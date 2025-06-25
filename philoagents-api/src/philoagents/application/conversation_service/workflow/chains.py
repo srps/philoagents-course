@@ -9,13 +9,17 @@ from philoagents.domain.prompts import (
     PHILOSOPHER_CHARACTER_CARD,
     SUMMARY_PROMPT,
 )
+from pydantic import SecretStr
 
 
-def get_chat_model(temperature: float = 0.7, model_name: str = settings.GROQ_LLM_MODEL) -> ChatGroq:
+def get_chat_model(temperature: float = 0.6, top_p: float = 0.95,
+    model_name: str = settings.GROQ_LLM_MODEL) -> ChatGroq:
+    model_kwargs = {"top_p": top_p}
     return ChatGroq(
-        api_key=settings.GROQ_API_KEY,
-        model_name=model_name,
+        api_key=SecretStr(settings.GROQ_API_KEY),
+        model=model_name,
         temperature=temperature,
+        model_kwargs=model_kwargs,
     )
 
 
@@ -36,7 +40,7 @@ def get_philosopher_response_chain():
 
 
 def get_conversation_summary_chain(summary: str = ""):
-    model = get_chat_model(model_name=settings.GROQ_LLM_MODEL_SUMMARY)
+    model = get_chat_model(model_name=settings.GROQ_LLM_MODEL_CONTEXT_SUMMARY)
 
     summary_message = EXTEND_SUMMARY_PROMPT if summary else SUMMARY_PROMPT
 
