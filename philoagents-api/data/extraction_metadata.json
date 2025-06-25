@@ -50,5 +50,9 @@
     {
         "id": "dennett",
         "urls": []
+    },
+    {
+        "id": "mines",
+        "urls": []
     }
 ]

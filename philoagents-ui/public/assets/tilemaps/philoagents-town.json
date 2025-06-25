@@ -327,6 +327,18 @@
                  "width":0,
                  "x":400.0,
                  "y":600.0
+                },
+                {
+                 "height":0,
+                 "id":291,
+                 "name":"Minês",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":400.723404255319,
+                 "y":1147.91489361702
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -335,7 +347,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":293,
+ "nextobjectid":294,
  "orientation":"orthogonal",
  "properties":[
         {

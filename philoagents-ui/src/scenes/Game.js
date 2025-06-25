@@ -103,7 +103,12 @@ export class Game extends Scene
                 defaultDirection: "front",
                 roamRadius: 300,
                 defaultMessage: "Olá, eu sou o Sérgio, o pai da Maria Inês. neste momento estou ocupado a ler e a escrever sobre programação. Mas fico feliz por teres passado por cá." 
-            }
+            },
+            { 
+                id: "mines", 
+                name: "Minês", 
+                defaultDirection: "front",
+                roamRadius: 300,            }
         ];
 
         this.philosophers = [];
