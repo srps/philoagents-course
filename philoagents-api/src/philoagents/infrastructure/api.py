@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from typing import Optional
 
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,6 +13,7 @@ from philoagents.application.conversation_service.generate_response import (
 from philoagents.application.conversation_service.reset_conversation import (
     reset_conversation_state,
 )
+from philoagents.application.session_service.session_manager import session_manager
 from philoagents.domain.philosopher_factory import PhilosopherFactory
 
 from .opik_utils import configure
@@ -23,6 +25,7 @@ configure()
 async def lifespan(app: FastAPI):
     """Handles startup and shutdown events for the API."""
     # Startup code (if any) goes here
+    session_manager.start_cleanup_task()
     yield
     # Shutdown code goes here
     opik_tracer = OpikTracer()
@@ -43,6 +46,31 @@ app.add_middleware(
 class ChatMessage(BaseModel):
     message: str
     philosopher_id: str
+    user_id: Optional[str] = None
+
+
+class SessionResponse(BaseModel):
+    user_id: str
+    created_at: str
+    message: str
+
+
+@app.post("/session")
+async def create_session():
+    """Create a new user session.
+
+    Returns:
+        SessionResponse: Session information including user_id
+    """
+    try:
+        session = session_manager.create_session()
+        return SessionResponse(
+            user_id=session.user_id,
+            created_at=session.created_at.isoformat(),
+            message="Session created successfully"
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/chat")
@@ -58,6 +86,7 @@ async def chat(chat_message: ChatMessage):
             philosopher_perspective=philosopher.perspective,
             philosopher_style=philosopher.style,
             philosopher_context="",
+            user_id=chat_message.user_id,
         )
         return {"response": response}
     except Exception as e:
@@ -97,6 +126,7 @@ async def websocket_chat(websocket: WebSocket):
                     philosopher_perspective=philosopher.perspective,
                     philosopher_style=philosopher.style,
                     philosopher_context="",
+                    user_id=data.get("user_id"),
                 )
 
                 # Send initial message to indicate streaming has started
@@ -122,9 +152,19 @@ async def websocket_chat(websocket: WebSocket):
         pass
 
 
+class ResetRequest(BaseModel):
+    user_id: Optional[str] = None
+
+
 @app.post("/reset-memory")
-async def reset_conversation():
-    """Resets the conversation state. It deletes the two collections needed for keeping LangGraph state in MongoDB.
+async def reset_conversation(request: ResetRequest = ResetRequest()):
+    """Resets the conversation state.
+
+    If user_id is provided, resets only that user's conversations.
+    If user_id is None, resets all conversations (admin function).
+
+    Args:
+        request: Request body containing optional user_id
 
     Raises:
         HTTPException: If there is an error resetting the conversation state.
@@ -132,7 +172,7 @@ async def reset_conversation():
         dict: A dictionary containing the result of the reset operation.
     """
     try:
-        result = await reset_conversation_state()
+        result = await reset_conversation_state(user_id=request.user_id)
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

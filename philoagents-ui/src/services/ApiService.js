@@ -1,7 +1,9 @@
+import SessionService from './SessionService.js';
+
 class ApiService {
   constructor() {
     const isHttps = window.location.protocol === 'https:';
-    
+
     if (isHttps) {
       console.log('Using GitHub Codespaces');
       const currentHostname = window.location.hostname;
@@ -32,11 +34,16 @@ class ApiService {
 
   async sendMessage(philosopher, message) {
     try {
+      // Ensure we have a session
+      await SessionService.ensureSession();
+      const userId = SessionService.getUserId();
+
       const data = await this.request('/chat', 'POST', {
         message,
-        philosopher_id: philosopher.id
+        philosopher_id: philosopher.id,
+        user_id: userId
       });
-      
+
       return data.response;
     } catch (error) {
       console.error('Error sending message to API:', error);
@@ -50,18 +57,8 @@ class ApiService {
 
   async resetMemory() {
     try {
-      const response = await fetch(`${this.apiUrl}/reset-memory`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to reset memory');
-      }
-      
-      return await response.json();
+      // Use SessionService to reset user-specific conversations
+      return await SessionService.resetUserConversations();
     } catch (error) {
       console.error('Error resetting memory:', error);
       throw error;

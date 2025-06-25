@@ -1,8 +1,10 @@
+import SessionService from './SessionService.js';
+
 class WebSocketApiService {
   constructor() {
     // Initialize connection-related properties
     this.initializeConnectionProperties();
-    
+
     // Set up WebSocket URL based on environment
     this.baseUrl = this.determineWebSocketBaseUrl();
   }
@@ -112,11 +114,16 @@ class WebSocketApiService {
         await this.connect();
       }
 
+      // Ensure we have a session
+      await SessionService.ensureSession();
+      const userId = SessionService.getUserId();
+
       this.registerCallbacks(callbacks);
 
       this.socket.send(JSON.stringify({
         message: message,
-        philosopher_id: philosopher.id
+        philosopher_id: philosopher.id,
+        user_id: userId
       }));
     } catch (error) {
       console.error('Error sending message via WebSocket:', error);

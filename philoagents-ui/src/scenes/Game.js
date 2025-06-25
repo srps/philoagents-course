@@ -2,6 +2,7 @@ import { Scene } from 'phaser';
 import Character from '../classes/Character';
 import DialogueBox from '../classes/DialogueBox';
 import DialogueManager from '../classes/DialogueManager';
+import SessionService from '../services/SessionService.js';
 
 export class Game extends Scene
 {
@@ -21,6 +22,9 @@ export class Game extends Scene
 
     create ()
     {
+        // Initialize user session
+        this.initializeSession();
+
         const map = this.createTilemap();
         const tileset = this.addTileset(map);
         const layers = this.createLayers(map, tileset);
@@ -57,6 +61,16 @@ export class Game extends Scene
         this.dialogueManager.initialize(this.dialogueBox);
     }
 
+    async initializeSession() {
+        try {
+            await SessionService.ensureSession();
+            const session = SessionService.getSession();
+            console.log('Game session initialized:', session.user_id);
+        } catch (error) {
+            console.error('Failed to initialize session:', error);
+        }
+    }
+
     createPhilosophers(map, layers) {
         const philosopherConfigs = [
             { id: "socrates", name: "Socrates", defaultDirection: "right", roamRadius: 800 },
@@ -82,6 +96,13 @@ export class Game extends Scene
                 defaultDirection: "front",
                 roamRadius: 300,
                 defaultMessage: "Hey, I'm busy teaching my cat AI with my latest course. I can't talk right now. Check out Decoding ML for more on my thoughts." 
+            },
+            { 
+                id: "sergio", 
+                name: "Sérgio", 
+                defaultDirection: "front",
+                roamRadius: 300,
+                defaultMessage: "Olá, eu sou o Sérgio, o pai da Maria Inês. neste momento estou ocupado a ler e a escrever sobre programação. Mas fico feliz por teres passado por cá." 
             }
         ];
 

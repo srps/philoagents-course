@@ -1,4 +1,5 @@
 import { Scene } from 'phaser';
+import SessionService from '../services/SessionService.js';
 
 export class MainMenu extends Scene {
     constructor() {
@@ -8,6 +9,9 @@ export class MainMenu extends Scene {
     create() {
         this.add.image(0, 0, 'background').setOrigin(0, 0);
         this.add.image(510, 260, 'logo').setScale(0.55);
+
+        // Initialize and display session info
+        this.initializeSession();
 
         const centerX = this.cameras.main.width / 2;
         const startY = 524;
@@ -24,6 +28,27 @@ export class MainMenu extends Scene {
         this.createButton(centerX, startY + buttonSpacing * 2, 'Support Philoagents', () => {
             window.open('https://github.com/neural-maze/philoagents-course', '_blank');
         });
+    }
+
+    async initializeSession() {
+        try {
+            await SessionService.ensureSession();
+            const session = SessionService.getSession();
+
+            // Display session info in bottom right corner
+            const sessionText = `Session: ${session.user_id.substring(0, 8)}...`;
+            this.add.text(this.cameras.main.width - 10, this.cameras.main.height - 10, sessionText, {
+                fontSize: '14px',
+                fontFamily: 'Arial',
+                color: '#ffffff',
+                backgroundColor: '#000000',
+                padding: { x: 8, y: 4 }
+            }).setOrigin(1, 1);
+
+            console.log('Main menu session initialized:', session.user_id);
+        } catch (error) {
+            console.error('Failed to initialize session in main menu:', error);
+        }
     }
 
     createButton(x, y, text, callback) {

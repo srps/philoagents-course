@@ -1,5 +1,5 @@
 import uuid
-from typing import Any, AsyncGenerator, Union
+from typing import Any, AsyncGenerator, Union, Optional
 
 from langchain_core.messages import AIMessage, AIMessageChunk, HumanMessage
 from langgraph.checkpoint.mongodb.aio import AsyncMongoDBSaver
@@ -9,6 +9,7 @@ from philoagents.application.conversation_service.workflow.graph import (
     create_workflow_graph,
 )
 from philoagents.application.conversation_service.workflow.state import PhilosopherState
+from philoagents.application.session_service.session_manager import session_manager
 from philoagents.config import settings
 
 
@@ -19,17 +20,20 @@ async def get_response(
     philosopher_perspective: str,
     philosopher_style: str,
     philosopher_context: str,
+    user_id: Optional[str] = None,
     new_thread: bool = False,
 ) -> tuple[str, PhilosopherState]:
     """Run a conversation through the workflow graph.
 
     Args:
-        message: Initial message to start the conversation.
+        messages: Initial message to start the conversation.
         philosopher_id: Unique identifier for the philosopher.
         philosopher_name: Name of the philosopher.
         philosopher_perspective: Philosopher's perspective on the topic.
         philosopher_style: Style of conversation (e.g., "Socratic").
         philosopher_context: Additional context about the philosopher.
+        user_id: Optional user identifier for session management.
+        new_thread: Whether to create a new conversation thread.
 
     Returns:
         tuple[str, PhilosopherState]: A tuple containing:
@@ -39,6 +43,8 @@ async def get_response(
     Raises:
         RuntimeError: If there's an error running the conversation workflow.
     """
+    # Get or create user session
+    session = session_manager.get_or_create_session(user_id)
 
     graph_builder = create_workflow_graph()
 
@@ -52,9 +58,11 @@ async def get_response(
             graph = graph_builder.compile(checkpointer=checkpointer)
             opik_tracer = OpikTracer(graph=graph.get_graph(xray=True))
 
-            thread_id = (
-                philosopher_id if not new_thread else f"{philosopher_id}-{uuid.uuid4()}"
-            )
+            # Create thread ID using user session and philosopher ID
+            if new_thread:
+                thread_id = f"{session.user_id}:{philosopher_id}-{uuid.uuid4()}"
+            else:
+                thread_id = session_manager.create_thread_id(session.user_id, philosopher_id)
             config = {
                 "configurable": {"thread_id": thread_id},
                 "callbacks": [opik_tracer],
@@ -82,6 +90,7 @@ async def get_streaming_response(
     philosopher_perspective: str,
     philosopher_style: str,
     philosopher_context: str,
+    user_id: Optional[str] = None,
     new_thread: bool = False,
 ) -> AsyncGenerator[str, None]:
     """Run a conversation through the workflow graph with streaming response.
@@ -93,6 +102,7 @@ async def get_streaming_response(
         philosopher_perspective: Philosopher's perspective on the topic.
         philosopher_style: Style of conversation (e.g., "Socratic").
         philosopher_context: Additional context about the philosopher.
+        user_id: Optional user identifier for session management.
         new_thread: Whether to create a new conversation thread.
 
     Yields:
@@ -101,6 +111,9 @@ async def get_streaming_response(
     Raises:
         RuntimeError: If there's an error running the conversation workflow.
     """
+    # Get or create user session
+    session = session_manager.get_or_create_session(user_id)
+
     graph_builder = create_workflow_graph()
 
     try:
@@ -113,9 +126,11 @@ async def get_streaming_response(
             graph = graph_builder.compile(checkpointer=checkpointer)
             opik_tracer = OpikTracer(graph=graph.get_graph(xray=True))
 
-            thread_id = (
-                philosopher_id if not new_thread else f"{philosopher_id}-{uuid.uuid4()}"
-            )
+            # Create thread ID using user session and philosopher ID
+            if new_thread:
+                thread_id = f"{session.user_id}:{philosopher_id}-{uuid.uuid4()}"
+            else:
+                thread_id = session_manager.create_thread_id(session.user_id, philosopher_id)
             config = {
                 "configurable": {"thread_id": thread_id},
                 "callbacks": [opik_tracer],
@@ -144,7 +159,7 @@ async def get_streaming_response(
 
 
 def __format_messages(
-    messages: Union[str, list[dict[str, Any]]],
+    messages: Union[str, list[str], list[dict[str, Any]]],
 ) -> list[Union[HumanMessage, AIMessage]]:
     """Convert various message formats to a list of LangChain message objects.
 
@@ -165,6 +180,7 @@ def __format_messages(
         if not messages:
             return []
 
+        # Check if it's a list of dictionaries with role/content structure
         if (
             isinstance(messages[0], dict)
             and "role" in messages[0]
@@ -172,12 +188,14 @@ def __format_messages(
         ):
             result = []
             for msg in messages:
-                if msg["role"] == "user":
-                    result.append(HumanMessage(content=msg["content"]))
-                elif msg["role"] == "assistant":
-                    result.append(AIMessage(content=msg["content"]))
+                if isinstance(msg, dict) and "role" in msg and "content" in msg:
+                    if msg["role"] == "user":
+                        result.append(HumanMessage(content=str(msg["content"])))
+                    elif msg["role"] == "assistant":
+                        result.append(AIMessage(content=str(msg["content"])))
             return result
 
-        return [HumanMessage(content=message) for message in messages]
+        # Handle list of strings
+        return [HumanMessage(content=str(message)) for message in messages]
 
     return []
