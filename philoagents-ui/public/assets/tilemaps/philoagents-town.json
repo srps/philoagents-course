@@ -315,6 +315,18 @@
                  "width":0,
                  "x":769.497671343212,
                  "y":114.751046525873
+                },
+                {
+                 "height":0,
+                 "id":290,
+                 "name":"Sérgio",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":400.0,
+                 "y":600.0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -323,7 +335,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":292,
+ "nextobjectid":293,
  "orientation":"orthogonal",
  "properties":[
         {
