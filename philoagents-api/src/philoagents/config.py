@@ -11,11 +11,13 @@ class Settings(BaseSettings):
 
     # --- GROQ Configuration ---
     GROQ_API_KEY: str
-    GROQ_LLM_MODEL: str = "llama-3.3-70b-versatile"
-    GROQ_LLM_MODEL_CONTEXT_SUMMARY: str = "llama-3.1-8b-instant"
-    
+    GROQ_LLM_MODEL: str = "qwen/qwen3-32b"
+    GROQ_LLM_MODEL_CONTEXT_SUMMARY: str = "qwen/qwen3-32b"
+
     # --- OpenAI Configuration (Required for evaluation) ---
-    OPENAI_API_KEY: str
+    OPENAI_API_KEY: str | None = Field(
+        default=None, description="API key for OpenAI services."
+    )
 
     # --- MongoDB Configuration ---
     MONGO_URI: str = Field(
@@ -41,7 +43,7 @@ class Settings(BaseSettings):
     TOTAL_MESSAGES_AFTER_SUMMARY: int = 5
 
     # --- RAG Configuration ---
-    RAG_TEXT_EMBEDDING_MODEL_ID: str = "sentence-transformers/all-MiniLM-L6-v2"
+    RAG_TEXT_EMBEDDING_MODEL_ID: str = "ibm-granite/granite-embedding-107m-multilingual"
     RAG_TEXT_EMBEDDING_MODEL_DIM: int = 384
     RAG_TOP_K: int = 3
     RAG_DEVICE: str = "cpu"
