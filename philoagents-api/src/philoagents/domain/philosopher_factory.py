@@ -103,11 +103,14 @@ class PhilosopherFactory:
         if id_lower not in PHILOSOPHER_STYLES:
             raise PhilosopherStyleNotFound(id_lower)
 
+        greeting = PHILOSOPHER_GREETING.get(id_lower, None)
+
         return Philosopher(
             id=id_lower,
             name=PHILOSOPHER_NAMES[id_lower],
             perspective=PHILOSOPHER_PERSPECTIVES[id_lower],
             style=PHILOSOPHER_STYLES[id_lower],
+            greeting=greeting,
         )
 
     @staticmethod

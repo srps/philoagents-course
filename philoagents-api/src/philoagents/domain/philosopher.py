@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
@@ -46,6 +46,7 @@ class Philosopher(BaseModel):
         description="Description of the philosopher's theoretical views about AI"
     )
     style: str = Field(description="Description of the philosopher's talking style")
+    greeting: Optional[str] = Field(description="Greeting message from the philosopher")
 
     def __str__(self) -> str:
-        return f"Philosopher(id={self.id}, name={self.name}, perspective={self.perspective}, style={self.style})"
+        return f"Philosopher(id={self.id}, name={self.name}, perspective={self.perspective}, style={self.style}), greeting={self.greeting}"

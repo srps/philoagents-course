@@ -25,6 +25,7 @@ async def conversation_node(state: PhilosopherState, config: RunnableConfig):
             "philosopher_name": state["philosopher_name"],
             "philosopher_perspective": state["philosopher_perspective"],
             "philosopher_style": state["philosopher_style"],
+            "philosopher_greeting": state["philosopher_greeting"],
             "summary": summary,
         },
         config,

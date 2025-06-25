@@ -10,6 +10,7 @@ class PhilosopherState(MessagesState):
         philosopher_name (str): The name of the philosopher.
         philosopher_perspective (str): The perspective of the philosopher about AI.
         philosopher_style (str): The style of the philosopher.
+        philosopher_greeting (str): The greeting message from the philosopher.
         summary (str): A summary of the conversation. This is used to reduce the token usage of the model.
     """
 
@@ -17,6 +18,7 @@ class PhilosopherState(MessagesState):
     philosopher_name: str
     philosopher_perspective: str
     philosopher_style: str
+    philosopher_greeting: str
     summary: str
 
 
@@ -33,5 +35,6 @@ PhilosopherState(philosopher_context={state["philosopher_context"]},
 philosopher_name={state["philosopher_name"]}, 
 philosopher_perspective={state["philosopher_perspective"]}, 
 philosopher_style={state["philosopher_style"]}, 
+philosopher_greeting={state["philosopher_greeting"]}, 
 conversation={conversation})
         """

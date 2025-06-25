@@ -85,6 +85,7 @@ async def chat(chat_message: ChatMessage):
             philosopher_name=philosopher.name,
             philosopher_perspective=philosopher.perspective,
             philosopher_style=philosopher.style,
+            philosopher_greeting=philosopher.greeting,
             philosopher_context="",
             user_id=chat_message.user_id,
         )
@@ -125,6 +126,7 @@ async def websocket_chat(websocket: WebSocket):
                     philosopher_name=philosopher.name,
                     philosopher_perspective=philosopher.perspective,
                     philosopher_style=philosopher.style,
+                    philosopher_greeting=philosopher.greeting,
                     philosopher_context="",
                     user_id=data.get("user_id"),
                 )

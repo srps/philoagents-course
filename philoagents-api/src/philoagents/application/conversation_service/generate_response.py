@@ -19,6 +19,7 @@ async def get_response(
     philosopher_name: str,
     philosopher_perspective: str,
     philosopher_style: str,
+    philosopher_greeting: Optional[str],
     philosopher_context: str,
     user_id: Optional[str] = None,
     new_thread: bool = False,
@@ -31,6 +32,7 @@ async def get_response(
         philosopher_name: Name of the philosopher.
         philosopher_perspective: Philosopher's perspective on the topic.
         philosopher_style: Style of conversation (e.g., "Socratic").
+        philosopher_greeting: Greeting message from the philosopher.
         philosopher_context: Additional context about the philosopher.
         user_id: Optional user identifier for session management.
         new_thread: Whether to create a new conversation thread.
@@ -73,6 +75,7 @@ async def get_response(
                     "philosopher_name": philosopher_name,
                     "philosopher_perspective": philosopher_perspective,
                     "philosopher_style": philosopher_style,
+                    "philosopher_greeting": philosopher_greeting or "",
                     "philosopher_context": philosopher_context,
                 },
                 config=config,
@@ -89,6 +92,7 @@ async def get_streaming_response(
     philosopher_name: str,
     philosopher_perspective: str,
     philosopher_style: str,
+    philosopher_greeting: Optional[str],
     philosopher_context: str,
     user_id: Optional[str] = None,
     new_thread: bool = False,
@@ -101,6 +105,7 @@ async def get_streaming_response(
         philosopher_name: Name of the philosopher.
         philosopher_perspective: Philosopher's perspective on the topic.
         philosopher_style: Style of conversation (e.g., "Socratic").
+        philosopher_greeting: Greeting message from the philosopher.
         philosopher_context: Additional context about the philosopher.
         user_id: Optional user identifier for session management.
         new_thread: Whether to create a new conversation thread.
@@ -142,6 +147,7 @@ async def get_streaming_response(
                     "philosopher_name": philosopher_name,
                     "philosopher_perspective": philosopher_perspective,
                     "philosopher_style": philosopher_style,
+                    "philosopher_greeting": philosopher_greeting or "",
                     "philosopher_context": philosopher_context,
                 },
                 config=config,

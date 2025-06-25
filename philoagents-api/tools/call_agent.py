@@ -55,6 +55,7 @@ async def main(philosopher_id: str, query: str) -> None:
         philosopher_name=philosopher.name,
         philosopher_perspective=philosopher.perspective,
         philosopher_style=philosopher.style,
+        philosopher_greeting=philosopher.greeting,
         philosopher_context="",
     ):
         print(f"\033[32m{chunk}\033[0m", end="", flush=True)
