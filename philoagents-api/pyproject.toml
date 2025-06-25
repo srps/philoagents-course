@@ -24,6 +24,7 @@ dependencies = [
     "pydantic>=2.11.7",
     "datasketch>=1.6.5",
     "sentence-transformers>=4.1.0",
+    "torch>=2.7.0",
 ]
 
 [dependency-groups]
@@ -34,6 +35,16 @@ dev = [
 
 [tool.pip]
 extra-index-url = "https://download.pytorch.org/whl/cpu/torch_stable.html"
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [build-system]
 requires = ["hatchling"]
